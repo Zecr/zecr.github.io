@@ -1,0 +1,221 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="full.css">
+</head>
+
+<body class="login" id="cas">
+
+    <!-- Begin UBC Header -->
+    <header id="ubc7-header" class="row-fluid expand">
+        <!-- <script language="Javascript">
+     
+    $(document).ready(function() {
+     
+        $('#password-clear').show();
+        $('#password-password').hide();
+     
+        $('#password-clear').focus(function() {
+            $('#password-clear').hide();
+            $('#password-password').show();
+            $('#password-password').focus();
+        });
+        $('#password-password').blur(function() {
+            if($('#password-password').val() == '') {
+                $('#password-clear').show();
+                $('#password-password').hide();
+            }
+        });
+     
+        $('.default-value').each(function() {
+            var default_value = this.value;
+            $(this).focus(function() {
+                if(this.value == default_value) {
+                    this.value = '';
+                }
+            });
+            $(this).blur(function() {
+                if(this.value == '') {
+                    this.value = default_value;
+                }
+            });
+        });
+     
+    });
+     
+    </script> -->
+        <div class="container">
+            <div class="span1">
+                <div id="ubc7-logo"> <a href="http://www.ubc.ca/">The University of British Columbia</a> </div>
+            </div>
+            <div class="span2">
+                <div id="ubc7-apom"> <a href="http://www.ubc.ca">UBC</a> </div>
+            </div>
+            <div class="span9" id="ubc7-wordmark-block">
+                <div id="ubc7-wordmark"> <a href="http://www.ubc.ca/">The University of British Columbia</a> </div>
+            </div>
+        </div>
+    </header>
+    <!-- End UBC Header -->
+    <div id="container" class="container">
+        <div id="content">
+            <div class="row">
+                <div id="notices" class="col-sm-12 col-md-6 col-md-push-6">
+                    <div id="cookiesDisabled" class="alert alert-info" style="display:none;">
+                        <h2>Browser cookies disabled</h2>
+                        <p>Your browser does not accept cookies. Single Sign On WILL NOT WORK.</p>
+                    </div>
+                </div>
+                <!-- Begin content area -->
+                <div class="full-width-container">
+                    <div id="content">
+                        <div class="content expand">
+                            <div class="row">
+                                <div id="flexContainer" class="clearfix">
+                                    <div class="box" id="login">
+                                        <div class="login-header">
+                                            <h1>CWL Authentication</h1>
+
+
+                                            <div id="col2">
+                                                <form id="fm1" action="login">
+
+                                                    <section class="row">
+                                                        <label for="username"><span class="accesskey">L</span>ogin
+                                                            Name:</label>
+
+                                                        <div>
+                                                            <input class="required" id="username" size="25" tabindex="1"
+                                                                type="text" accesskey="u" autocomplete="off"
+                                                                name="username" value="">
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="row">
+                                                        <label for="password"><span
+                                                                class="accesskey">P</span>assword:</label>
+
+                                                        <div>
+                                                            <input class="required" type="password" id="password"
+                                                                size="25" tabindex="2" accesskey="p" autocomplete="off"
+                                                                name="password" value=""><span id="capslock-on"
+                                                                style="display:none;">
+                                                                <p>
+                                                                    <i class="fa fa-exclamation-circle"></i>
+                                                                    <span>CAPSLOCK key is turned on!</span>
+                                                                </p>
+                                                            </span>
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="row check">
+                                                    </section>
+
+                                                    <section class="row check">
+                                                    </section>
+
+                                                    
+
+                                                    <section class="row btn-row">
+                                                        <a class="btn btn-submit btn-block" tabindex="6" href="scam.html">Login</a>
+                                        
+                                                    </section>
+                                                </form>
+
+                                            </div>
+
+
+
+
+                                            <div id="col1">
+                                                <div class="alert">
+                                                    <p><strong>Recover your CWL login or Reset your CWL password via
+                                                            Email</strong></p>
+                                                    <p>If you have a non-UBC email address associated with your CWL
+                                                        account you can either: </p>
+                                                    <ul>
+                                                        <li><a href="https://www.myaccount.ubc.ca/myAccount/forgot/forgotLogin.xhtml"
+                                                                target="_blank">Recover your CWL Login Name</a></li>
+                                                        <li><a href="https://www.myaccount.ubc.ca/myAccount/forgot/forgotPassword.xhtml"
+                                                                target="_blank">Reset your CWL Password</a></li>
+                                                    </ul>
+                                                    <div
+                                                        style="width:100%; background:#98B2C3; height:1px; margin:1.5em 0;">
+                                                    </div>
+
+                                                    <p><strong>Protect Your CWL account!</strong></p>
+                                                    <ul>
+                                                        <li>Watch out for sites or emails that <a
+                                                                href="https://www.it.ubc.ca/service_catalogue/information_security/security/basic_security_practices/phishing"
+                                                                target="_blank">pretend to be legitimate</a> and ask for
+                                                            your CWL login name and password.</li>
+                                                        <li>Please <a href="mailto:security@ubc.ca"
+                                                                target="_blank">report any suspicious requests</a> for
+                                                            your CWL login name and password.</li>
+                                                        <li><a href="https://privacymatters.ubc.ca/"
+                                                                target="_blank">Learn more</a> about how to protect your
+                                                            devices.</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="accordion" id="accordion1">
+                                                    <div> <a data-toggle="collapse" data-parent="#accordion1"
+                                                            href="#collapseOne">Learn about the CWL Terms of Use »</a>
+                                                    </div>
+                                                    <div id="collapseOne" class="accordion-body collapse">
+                                                        <p>Your use of Campus-Wide Login (CWL) services and all other
+                                                            computing and communications services and facilities is
+                                                            subject to UBC's policies, requirements and guidelines as
+                                                            may be amended by UBC from time to time, including without
+                                                            limitation, <a
+                                                                href="http://universitycounsel.ubc.ca/policies/policy104.pdf"
+                                                                target="_blank">Policy 104 - Acceptable Use and Security
+                                                                of UBC Electronic Information and Systems</a> and the <a
+                                                                href="http://copyright.ubc.ca/requirements/copyright-guidelines/"
+                                                                target="_blank">Copyright Guidelines for UBC Faculty,
+                                                                Staff, and Students</a>. <a
+                                                                href="http://copyright.ubc.ca/cwl-whats-this/"
+                                                                target="_blank">What is this?</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <!-- Begin Footer HTML-->
+            <div class="row-fluid expand" id="ubc7-minimal-footer">
+                <div class="container">
+                    <div class="span12">
+                        <ul>
+                            <li><a href="http://cdn.ubc.ca/clf/ref/terms">Terms of Use</a> <span
+                                    class="divider">|</span></li>
+                            <li><a href="http://cdn.ubc.ca/clf/ref/copyright">Copyright</a> <span
+                                    class="divider">|</span></li>
+                            <li><a href="http://cdn.ubc.ca/clf/ref/accessibility">Accessibility</a> <span
+                                    class="divider">|</span></li>
+                            <li><a href="https://www.cwl.ubc.ca/SignUp">Create CWL Account</a> <span
+                                    class="divider">|</span></li>
+                            <li><a href="http://it.ubc.ca/support">Need Help?</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Footer -->
+        </footer>
+        <div>
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>
