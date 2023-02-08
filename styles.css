@@ -1,13 +1,13 @@
-/*Make this in a coloured box that is centered and doesn't span the entire width of the page.*/
-/*Have the element be centered in the page*/
+#content_box {
+    margin: 0 auto;
+    width: 50%;
+}
 
 #main_header {
     background-color: #002145;
     color: #fff;
     padding: 10px;
     text-align: center;
-    width: 50%;
-    margin: 0 auto;
     font-size: 5em;
 }
 
@@ -16,8 +16,6 @@
     color: #fff;
     padding: 10px;
     text-align: center;
-    width: 50%;
-    margin: 0 auto;
     font-size: 2em;
 }
 
@@ -29,6 +27,10 @@ Make the box that the text sits in be a lighter orange colour and make the text 
     color: #000000;
     padding: 10px;
     text-align: center;
-    width: 50%;
     margin: 0 auto;
+}
+
+#poster {
+    align-content: center;
+    width: 100%;
 }
