@@ -2282,7 +2282,7 @@ table th[class*="span"],
     *margin-right: .3em;
     line-height: 14px;
     vertical-align: text-top;
-    background-image: url("../images/glyphicons-halflings.png");
+    background-image: url("https://cas.id.ubc.ca/ubc-cas/themes/ubc_cas/images/glyphicons-halflings.png");    
     background-position: 14px 14px;
     background-repeat: no-repeat
 }
@@ -2304,7 +2304,7 @@ table th[class*="span"],
 .dropdown-submenu:focus>a>[class^="icon-"],
 .dropdown-submenu:hover>a>[class*=" icon-"],
 .dropdown-submenu:focus>a>[class*=" icon-"] {
-    background-image: url("../images/glyphicons-halflings-white.png")
+    background-image: url("https://cas.id.ubc.ca/ubc-cas/themes/ubc_cas/images/glyphicons-halflings.png")
 }
 
 .icon-glass {
@@ -7512,11 +7512,12 @@ a.badge:focus {
 /*! Font Awesome 3.2.1 by Dave Gandy - http://fontawesome.io */
 @font-face {
     font-family: 'FontAwesome';
-    src: url('../font/font-v4/fontawesome-webfont-ubc-v4.eot');
-    src: url('../font/font-v4/fontawesome-webfont-ubc-v4.eot?#iefix') format('embedded-opentype'), url('../font/font-v4/fontawesome-webfont-ubc-v4.ttf') format('truetype'), url('../font/font-v4/fontawesome-webfont-ubc-v4.woff') format('woff');
+    src: url('https://cas.id.ubc.ca/ubc-cas/themes/ubc_cas/font/font-v4/fontawesome-webfont-ubc-v4.eot');
+    src: url('https://cas.id.ubc.ca/ubc-cas/themes/ubc_cas/font/font-v4/fontawesome-webfont-ubc-v4.eot?#iefix') format('embedded-opentype'), url('https://cas.id.ubc.ca/ubc-cas/themes/ubc_cas/font/font-v4/fontawesome-webfont-ubc-v4.ttf') format('truetype'), url('https://cas.id.ubc.ca/ubc-cas/themes/ubc_cas/font/font-v4/fontawesome-webfont-ubc-v4.woff') format('woff');
     font-weight: 400;
     font-style: normal
 }
+
 
 [class^="icon-"],
 [class*=" icon-"] {
@@ -12499,9 +12500,10 @@ only screen and (min-device-pixel-ratio: 1.5) {
     #ubc7-ql-apom span,
     #ubc7-ql-mobile span,
     .ubc7-arrow {
-        background-image: url('../images/ubc7-clf-sprite-white-2x.png') !important;
+        background-image: url('https://cas.id.ubc.ca/ubc-cas/themes/ubc_cas/images/ubc7-clf-sprite-white-2x.png') !important;
         background-size: 1500px !important
     }
+    
 }
 
 @media only screen and (-moz-min-device-pixel-ratio: 1.5) and (max-width: 979px),
