@@ -1,6 +1,10 @@
-@import url("ubc-clf-full.css");
-@import url("font-awesome.css");
+
 /* Unit editable CSS */
+
+.required {
+	/*Fill the div container full width and make height a bit longer*/
+	width: 75%;
+}
 
 h1, h2, h3, h4, h5, h6 {
 	line-height: 1.05em;
@@ -33,7 +37,7 @@ p.SvcName {
 }
 .row-fluid .span2 {
 	width: 14.893617021276595%;
- *width: 14.840425531914894%;
+ 	*width: 14.840425531914894%;
 	display: none;
 }
 body {
@@ -89,7 +93,7 @@ a.btn.btn-submit.btn-block {
 	font-size: .85em;
 	line-height: 1.55em;
 	padding-left: 25px;
-	background-image: url(../images/alerts_bullet_white.png);
+	background-image: url(https://cas.id.ubc.ca/ubc-cas/themes/ubc_cas/images/alerts_bullet_white.png);
 	background-repeat: no-repeat;
 	background-position: 0 0;
 }
