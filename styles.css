@@ -1,0 +1,34 @@
+/*Make this in a coloured box that is centered and doesn't span the entire width of the page.*/
+/*Have the element be centered in the page*/
+
+#main_header {
+    background-color: #002145;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    font-size: 5em;
+}
+
+#sub_header {
+    background-color: #002145;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    font-size: 2em;
+}
+
+/*Have this message also be centered in the page with the same width as the main header
+Make the box that the text sits in be a lighter orange colour and make the text bigger as well, but not bigger than the main header font size*/
+
+.message {
+    background-color: #FFA500;
+    color: #000000;
+    padding: 10px;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
