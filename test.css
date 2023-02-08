@@ -279,3 +279,7 @@ select, textarea, input[type="text"], input[type="password"] {
 	float: none;
 	padding: 0 0 0px;
 }
+
+#custom-header {
+    color: white;
+}
