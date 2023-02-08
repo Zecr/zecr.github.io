@@ -19,9 +19,6 @@
     font-size: 2em;
 }
 
-/*Have this message also be centered in the page with the same width as the main header
-Make the box that the text sits in be a lighter orange colour and make the text bigger as well, but not bigger than the main header font size*/
-
 .message {
     background-color: #FFA500;
     color: #000000;
