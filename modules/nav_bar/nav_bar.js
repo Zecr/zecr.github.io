@@ -4,7 +4,7 @@
 var id = document.currentScript.getAttribute("data-id");
 
 // Add CSS dependency to the page
-document.head.insertAdjacentHTML("beforeend", `<link rel="stylesheet" href="modules/nav_bar/nav_bar.css">`);
+document.head.insertAdjacentHTML("beforeend", `<link hx-preserve="true" rel="stylesheet" href="modules/nav_bar/nav_bar.css">`);
 
 // Pages to be added to the nav bar
 var pages = {
@@ -25,14 +25,10 @@ for (var key in pages) {
 // Add listener to nav items, when clicked, update the nav bar
 let nav_bar = document.currentScript.parentElement;
 
-nav_bar.addEventListener("click", (e) => {
-    Array.from(nav_bar.children).forEach((link) => {
-        if (link.text == e.target.text) {
-            link.classList.add("active");
-        } else {
-            link.classList.remove("active");
-        }
-    });
+// When element with class nav_item and parent of nav_bar is clicked, remove all active classes, then add to the clicked element
+$(nav_bar).on("click", ".nav_item", (e) => {
+    $(".nav_item").removeClass("active");
+    $(e.target).addClass("active");
 });
 
 // Remove the script tag

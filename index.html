@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="global_styles.css">
-        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
-        <script src="https://unpkg.com/htmx.org@1.9.8"></script>
+        <link hx-preserve="true" rel="stylesheet" href="global_styles.css">
+        <script hx-preserve="true" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+        <script hx-preserve="true" src="https://unpkg.com/htmx.org@1.9.8"></script>
+        <script hx-preserve="true" src="https://unpkg.com/htmx.org/dist/ext/head-support.js"></script>
+        <!-- <script hx-preserve="true" src="/modules/dynamic_header.js"></script> -->
     </head>
     <body>
+        <div id="background">
+            <script src="/modules/animated_background/ani_background.js"></script>
+        </div>
         <header>
-            <div id="page_title">
-                <div id="logo_container">
-                    <img src="1508821.jpg" alt="Logo">
-                </div>
-                <div>Zecr Samanadro</div>
-            </div>
+            <span id="page_title">Z</span>
             <nav>
-                <script id="nav_bar" src="modules/nav_bar/nav_bar.js" data-id="Home"></script>
+                <script src="/modules/nav_bar/nav_bar.js" data-id="Home"></script>
             </nav>
         </header>
-        <main hx-get="pages/home_page/home.html" hx-swap="innerHTML" hx-trigger="load"></main>
+        <main hx-get="/pages/home_page/home.html" hx-swap="innerHTML" hx-trigger="load"></main>
     </body>
 </html>

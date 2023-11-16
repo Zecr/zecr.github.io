@@ -1,0 +1,25 @@
+#main_title {
+    font-size: 6em;
+    text-align: center;
+}
+
+#main_paragraph {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#who_am_i {
+    display: flex;
+    width: 66%;
+    margin: auto;
+    margin-top: 5em;
+}
+
+#who_am_i img {
+    width: 33%;
+    object-fit: fill;
+}
+
+#who_am_i #about {
+    margin: 0em 3em;
+}

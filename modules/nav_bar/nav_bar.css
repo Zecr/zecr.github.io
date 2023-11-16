@@ -6,20 +6,24 @@ nav {
 }
 
 nav a {
-    color: rgb(0, 107, 179);
+    color: rgb(92, 190, 255);
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: 500;
     padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
+
+    transition: ease-in-out 0.5s;
 }
 
 nav a:hover {
-    background-color: rgb(0, 107, 179);
+    /* background: radial-gradient(ellipse farthest-side, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)); */
     color: white;
+    cursor: pointer;
 }
 
 nav a.active {
-    background-color: rgb(0, 107, 179);
+    background-color: transparent;
     color: white;
+    /* box-shadow: 0 0 7px 0px white; */
+    text-shadow: 0px 0px 3px white, 0px 0px 10px white, 0px 0px 18px white;
 }
