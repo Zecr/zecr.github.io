@@ -1,0 +1,38 @@
+html {
+    background-color: #323232;
+    color: white;
+}
+
+@font-face {
+    font-family: "Trattatello";
+    src: url(assets/fonts/Trattatello.ttf);
+}
+
+#page_title {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+#page_title div {
+    font-family: "Trattatello";
+    font-size: 2em;
+}
+
+#page_title img {
+    height: 2em;
+    position: relative;
+    left: -9px;
+}
+
+#logo_container {
+    width: 2em;
+    height: 2em;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}

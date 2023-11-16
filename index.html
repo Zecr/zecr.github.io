@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <title>Zecr</title>
+        <link rel="stylesheet" href="global_styles.css">
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+        <script src="https://unpkg.com/htmx.org@1.9.8"></script>
     </head>
     <body>
         <header>
-            <h1>Zecr</h1>
+            <div id="page_title">
+                <div id="logo_container">
+                    <img src="1508821.jpg" alt="Logo">
+                </div>
+                <div>Zecr Samanadro</div>
+            </div>
+            <nav>
+                <script id="nav_bar" src="modules/nav_bar/nav_bar.js" data-id="Home"></script>
+            </nav>
         </header>
-        <main>
-            <section>
-                <h2>Testing</h2>
-                <p>Testing</p>
-            </section>
-        </main>
-        <footer>
-            <p>Footer</p>
-        </footer>
+        <main hx-get="pages/home_page/home.html" hx-swap="innerHTML" hx-trigger="load"></main>
     </body>
 </html>
