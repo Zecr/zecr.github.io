@@ -9,7 +9,8 @@ document.head.insertAdjacentHTML("beforeend", `<link hx-preserve="true" rel="sty
 // Pages to be added to the nav bar
 var pages = {
     Home: "pages/home_page/home.html",
-    About: "pages/about_page/about.html",
+    Projects: "pages/projects_page/projects.html",
+    Skills: "pages/skills_page/skills.html",
     Contact: "pages/contact_page/contact.html",
 };
 
@@ -29,6 +30,10 @@ let nav_bar = document.currentScript.parentElement;
 $(nav_bar).on("click", ".nav_item", (e) => {
     $(".nav_item").removeClass("active");
     $(e.target).addClass("active");
+});
+
+$(nav_bar).on("htmx:responseError", (e) => {
+    $('main').html(`<h1> Error loading tab </h1>`);
 });
 
 // Remove the script tag

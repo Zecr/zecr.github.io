@@ -91,7 +91,7 @@ if (localStorage.getItem("zecr_last_visit_time")) {
             $("body").css("opacity", "unset");
 
             localStorage.setItem("zecr_last_visit_time", new Date());
-            localStorage.setItem("zecr_visit_count", 1);
+            localStorage.setItem("zecr_visit_count", 0);
             $(this).remove();
             $("#splash_joke").remove();
         });
