@@ -16,10 +16,33 @@
 }
 
 #who_am_i img {
-    width: 33%;
-    object-fit: fill;
+    width: 15em;
+    object-fit: cover;
 }
 
 #who_am_i #about {
     margin: 0em 3em;
+}
+
+@media (max-width: 1000px) {
+    #who_am_i {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        align-items: center;
+    }
+
+    #who_am_i #about {
+        margin: 0em 0em 0em 3em;
+    }    
+}
+
+@media (max-width: 768px) {
+    #who_am_i {
+        flex-direction: column;
+    }
+
+    #who_am_i #about {
+        margin: unset;
+    }
 }

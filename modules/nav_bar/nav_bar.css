@@ -12,7 +12,7 @@ nav a {
     font-weight: 500;
     padding: 0.5rem 1rem;
 
-    transition: ease-in-out 0.5s;
+    transition: cubic-bezier(0, 0.5, 0, 1) 0.5s;
 }
 
 nav a:hover {
