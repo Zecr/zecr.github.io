@@ -1,3 +1,9 @@
+// Add CSS dependency to the page
+document.head.insertAdjacentHTML(
+    "beforeend",
+    `<link hx-preserve="true" rel="stylesheet" href="/modules/animated_background/ani_background.css">`
+);
+
 // Create an html canvas element, randommly generate circles in random locations which grow then shrink. When a circle finishes a cycle, they are randomly regenerated in a new location.
 
 // Create a canvas element
@@ -95,3 +101,32 @@ for (var i = 0; i < 5; i++) {
     generateCircle();
 }
 setInterval(animate, 1000 / 24);
+
+// --------------------------------------------------------
+
+// Make a white circle element that follows the mouse (Not using the canvas)
+var mouseCircle = document.createElement("div");
+mouseCircle.id = "mouse_highlight_circle";
+
+// Transform the mouse circle to be in the center of the cursor
+mouseCircle.style.transform = "translate(-50%, -50%)";
+
+document.getElementById("background").appendChild(mouseCircle);
+
+// Make the mouse circle follow the mouse, with a 1 second delay.
+document.addEventListener("mousemove", function (e) {
+    mouseCircle.animate(
+        {
+            transform: `translate(${e.clientX - mouseCircle.offsetWidth / 2}px, ${
+                e.clientY - mouseCircle.offsetHeight / 2
+            }px)`,
+        },
+        {
+            duration: 2000,
+            fill: "forwards",
+        }
+    );
+});
+
+// Remove the script tag
+document.currentScript.remove();

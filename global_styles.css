@@ -24,57 +24,35 @@ main {
     margin: 1em;
 }
 
-/* ::-webkit-scrollbar {
-    width: 6pt;
-}
-
-::-webkit-scrollbar-track {
-    background: transparent;
-    background: rgb(0 0 0 / 50%);
-}
-
-::-webkit-scrollbar-thumb {
-    background: #2f3133;
-    border-radius: 4pt;
-    width: 2pt;
-} */
-
-#background {
-    position: fixed;
-    left: 0;
-    top: 0;
-
-    /* background-image: url("assets/images/background_2.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover; */
-    
-    filter: blur(60px);
-
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-}
-
-#background::after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-@font-face {
-    font-family: "Trattatello";
-    src: url(assets/fonts/Trattatello.ttf);
-}
-
-#page_title {
-    font-family: "Trattatello";
-    font-size: 2em;
-    width: 1.5em;
+#main_title {
+    font-size: 6em;
     text-align: center;
+}
+
+#sub_title {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.info_section {
+    display: flex;
+    width: 100%;
+    max-width: 80em;
+    margin: auto;
+    margin-top: 5em;
+}
+
+.info_section img {
+    object-fit: contain;
+}
+
+.info_section .description_text {
+    margin: 0em 3em;
+}
+
+@media (max-width: 1200px) {
+    .info_section {
+        flex-direction: column;
+        max-width: 35em;
+    }
 }

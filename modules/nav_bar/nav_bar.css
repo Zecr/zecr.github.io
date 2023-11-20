@@ -1,3 +1,15 @@
+@font-face {
+    font-family: "Trattatello";
+    src: url(/assets/fonts/Trattatello.ttf);
+}
+
+#page_title {
+    font-family: "Trattatello";
+    font-size: 2em;
+    width: 1.5em;
+    text-align: center;
+}
+
 nav {
     display: flex;
     gap: 1rem;
@@ -26,4 +38,19 @@ nav a.active {
     color: white;
     /* box-shadow: 0 0 7px 0px white; */
     text-shadow: 0px 0px 3px white, 0px 0px 10px white, 0px 0px 18px white;
+}
+
+#nav_load_error_message {
+    justify-content: center;
+    align-items: center;
+}
+
+#nav_load_error_message img {
+    width: 15em;
+}
+
+@media (max-width: 1200px) {
+    #nav_load_error_message div > * {
+        text-align: center;
+    }
 }

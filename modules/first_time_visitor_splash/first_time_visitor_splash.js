@@ -17,24 +17,27 @@ if (localStorage.getItem("zecr_last_visit_time")) {
 
     window.onload = function () {
         let visit_count = parseInt(localStorage.getItem("zecr_visit_count"));
-        if (visit_count <= 3 && visit_count > 0) {
-            $("#main_title").text("Welcome back!");
+        if (visit_count == 0) {
+            // Initial visit do nothing
+        } else if (visit_count <= 3) {
+            $("#main_title").text("Edwin says: Welcome back!");
             $("#main_paragraph").html(
-                `Hey, welcome back! Didn't get enough last time? But this is a small site... <br>
+                `Thanks for coming back!<br> 
+                Most people don't come back for a second time to a portfolio website <br>
                 ...or did you just come back for the "breathing bubbles" in the background?`
             );
         } else if (visit_count <= 5) {
-            $("#main_title").text("You're back again...");
+            $("#main_title").text("\"You're back again... how odd\" Edwin thinks to himself.");
             $("#main_paragraph").html(
                 `So, I'm pretty sure that this site only has a few pages... <br>
-                ...is there something really interesting about it or something?`
+                ...did I accidentally make something really interesting?`
             );
         } else {
-            $("#main_title").text("...");
+            $("#main_title").text("Edwin has left the site...");
             $("#main_paragraph").html(
-                `I'm starting to get a bit concerned ... are you okay? <br>
-                This is your ${visit_count}th visit to this site. <br>
-                There really isn't that much here...`
+                `Hello I'm stat-bot while my master is away <br> 
+                I see this is your ${visit_count}th visit to this site. <br>
+                End of program, press any key to continue...`
             );
         }
 
@@ -52,7 +55,7 @@ if (localStorage.getItem("zecr_last_visit_time")) {
 
     window.onload = function () {
         $("#main_paragraph").html(
-            `It seems that you've somehow stumbled upon my personal website. An accident? Perhaps... perhaps not. <br> 
+            `Hey, it seems that you've somehow stumbled upon my personal website. An accident? Perhaps... perhaps not. <br> 
             Anyways, I'm glad you're here. Click the button below to learn a bit more about me!`
         );
 
@@ -67,13 +70,13 @@ if (localStorage.getItem("zecr_last_visit_time")) {
         $("#main_paragraph").after(button);
 
         $("#splash_button").after(
-            `<div id='splash_joke'>By clicking the button above, you consent to the use of cookies and malware on your device. Just kidding.</div>`
+            `<div id='splash_joke'>By clicking the button above, you consent to the use of cookies and malware on your device. Just kidding about the malware.</div>`
         );
 
-        // Add event listener to button
+        // Button on click = Animate splash screen away and change home text
         $("#splash_button").click(function () {
-            $("#main_title").text("Welcome!");
-            $("#main_paragraph").html(`Have a look around!`);
+            $("#main_title").text("Hello!");
+            $("#main_paragraph").html(`My name is Edwin Zhou, a recent graduate from the University of British Columbia. <br>`);
 
             $("body").css({
                 visibility: "unset",
