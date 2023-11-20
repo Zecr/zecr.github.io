@@ -43,6 +43,7 @@ main {
 }
 
 .info_section img {
+    max-width: 30em;
     object-fit: contain;
 }
 

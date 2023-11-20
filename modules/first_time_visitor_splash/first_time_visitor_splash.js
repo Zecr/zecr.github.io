@@ -21,20 +21,20 @@ if (localStorage.getItem("zecr_last_visit_time")) {
             // Initial visit do nothing
         } else if (visit_count <= 3) {
             $("#main_title").text("Edwin says: Welcome back!");
-            $("#main_paragraph").html(
+            $("#sub_title").html(
                 `Thanks for coming back!<br> 
                 Most people don't come back for a second time to a portfolio website <br>
                 ...or did you just come back for the "breathing bubbles" in the background?`
             );
         } else if (visit_count <= 5) {
             $("#main_title").text("\"You're back again... how odd\" Edwin thinks to himself.");
-            $("#main_paragraph").html(
+            $("#sub_title").html(
                 `So, I'm pretty sure that this site only has a few pages... <br>
                 ...did I accidentally make something really interesting?`
             );
         } else {
             $("#main_title").text("Edwin has left the site...");
-            $("#main_paragraph").html(
+            $("#sub_title").html(
                 `Hello I'm stat-bot while my master is away <br> 
                 I see this is your ${visit_count}th visit to this site. <br>
                 End of program, press any key to continue...`
@@ -53,21 +53,21 @@ if (localStorage.getItem("zecr_last_visit_time")) {
 } else {
     $("body").css("visibility", "hidden");
 
-    window.onload = function () {
-        $("#main_paragraph").html(
+    $("main").on("loading_complete", function () {
+        $("#sub_title").html(
             `Hey, it seems that you've somehow stumbled upon my personal website. An accident? Perhaps... perhaps not. <br> 
             Anyways, I'm glad you're here. Click the button below to learn a bit more about me!`
         );
 
         $("#main_title").css("visibility", "visible");
-        $("#main_paragraph").css("visibility", "visible");
+        $("#sub_title").css("visibility", "visible");
         $("#background").css("visibility", "visible");
 
         // Insert button after paragraph
         let button = document.createElement("button");
         button.id = "splash_button";
         button.innerHTML = "Enter Site";
-        $("#main_paragraph").after(button);
+        $("#sub_title").after(button);
 
         $("#splash_button").after(
             `<div id='splash_joke'>By clicking the button above, you consent to the use of cookies and malware on your device. Just kidding about the malware.</div>`
@@ -76,7 +76,7 @@ if (localStorage.getItem("zecr_last_visit_time")) {
         // Button on click = Animate splash screen away and change home text
         $("#splash_button").click(function () {
             $("#main_title").text("Hello!");
-            $("#main_paragraph").html(`My name is Edwin Zhou, a recent graduate from the University of British Columbia. <br>`);
+            $("#sub_title").html(`My name is Edwin Zhou, a recent graduate from the University of British Columbia. <br>`);
 
             $("body").css({
                 visibility: "unset",
@@ -98,7 +98,7 @@ if (localStorage.getItem("zecr_last_visit_time")) {
             $(this).remove();
             $("#splash_joke").remove();
         });
-    };
+    });
 }
 
 document.currentScript.remove();

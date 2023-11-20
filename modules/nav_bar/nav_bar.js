@@ -1,7 +1,10 @@
 // <script src="nav_bar/nav_bar.js" data-id="Home"></script>
 
-// Get the id of the current page
-var id = document.currentScript.getAttribute("data-id");
+// Get the query string
+let current_tab = Object.fromEntries(new URLSearchParams(window.location.search))["tab"];
+if (current_tab == undefined) {
+    current_tab = "Home";
+}
 
 // Add CSS dependency to the page
 document.head.insertAdjacentHTML(
@@ -11,18 +14,22 @@ document.head.insertAdjacentHTML(
 
 // Pages to be added to the nav bar
 var pages = {
-    Home: "pages/home_page/home.html",
-    Projects: "pages/projects_page/projects.html",
-    Skills: "pages/skills_page/skills.html",
-    Contact: "pages/contact_page/contact.html",
+    Home: "/pages/home_page/home.html",
+    Projects: "/pages/projects_page/projects.html",
+    Skills: "/pages/skills_page/skills.html",
+    Contact: "/pages/contact_page/contact.html",
 };
 
 // Add nav items to the nav bar
 for (var key in pages) {
-    if (id != key) {
-        document.write(`<a class="nav_item" hx-get="${pages[key]}" hx-target="main"> ${key} </a>`);
+    if (current_tab == key) {
+        document.write(
+            `<a class="nav_item active" hx-get="${pages[key]}" hx-target="main" hx-replace-url="?tab=${key}"> ${key} </a>`
+        );
     } else {
-        document.write(`<a class="nav_item active" hx-get="${pages[key]}" hx-target="main"> ${key} </a>`);
+        document.write(
+            `<a class="nav_item" hx-get="${pages[key]}" hx-target="main" hx-replace-url="?tab=${key}"> ${key} </a>`
+        );
     }
 }
 
@@ -48,8 +55,13 @@ $(nav_bar).on("htmx:responseError", (e) => {
     $("main").animate({ opacity: 1 }, 500);
 });
 
-// Swap animation (Must wait for main to be loaded)
 $(document).ready(() => {
+    // Load the current tab
+    $("main").load(pages[current_tab], function () {
+        this.dispatchEvent(new Event("loading_complete"));
+    });
+
+    // Swap animation
     $("main").on("htmx:beforeSwap", (e) => {
         $("main").css("opacity", "0");
     });
@@ -58,5 +70,6 @@ $(document).ready(() => {
         $("main").animate({ opacity: 1 }, 500);
     });
 });
+
 // Remove the script tag
 document.currentScript.remove();
