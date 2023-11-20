@@ -55,7 +55,7 @@ if (localStorage.getItem("zecr_last_visit_time")) {
 
     $("main").on("loading_complete", function () {
         $("#sub_title").html(
-            `Hey, it seems that you've somehow stumbled upon my personal website. An accident? Perhaps... perhaps not. <br> 
+            `It seems that you've somehow stumbled upon my personal website. An accident perhaps... or perhaps not? <br> 
             Anyways, I'm glad you're here. Click the button below to learn a bit more about me!`
         );
 

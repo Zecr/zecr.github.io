@@ -58,6 +58,7 @@ $(nav_bar).on("htmx:responseError", (e) => {
 $(document).ready(() => {
     // Load the current tab
     $("main").load(pages[current_tab], function () {
+        // Notifies dependent modules that the page has finished loading
         this.dispatchEvent(new Event("loading_complete"));
     });
 
