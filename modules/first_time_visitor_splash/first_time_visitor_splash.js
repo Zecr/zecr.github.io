@@ -22,7 +22,7 @@ if (localStorage.getItem("zecr_last_visit_time")) {
         } else if (visit_count <= 3) {
             $("#main_title").text("Edwin says: Welcome back!");
             $("#sub_title").html(
-                `Thanks for coming back!<br> 
+                `Thanks for coming back!<br> <br>
                 Most people don't come back for a second time to a portfolio website <br>
                 ...or did you just come back for the "breathing bubbles" in the background?`
             );
@@ -35,7 +35,7 @@ if (localStorage.getItem("zecr_last_visit_time")) {
         } else {
             $("#main_title").text("Edwin has left the site...");
             $("#sub_title").html(
-                `Hello I'm stat-bot while my master is away <br> 
+                `Hello I'm stat-bot while my master is away <br> <br>
                 I see this is your ${visit_count}th visit to this site. <br>
                 End of program, press any key to continue...`
             );

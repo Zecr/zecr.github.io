@@ -88,6 +88,31 @@ $(document).ready(() => {
             $("header").removeClass("header_shade");
         }
     });
+
+    // Page icon animation on hover
+    let timeoutID;
+    let text = ["Zhou, Edwin", "Zecr Samanadro"];
+    let iteration = 1;
+    let alternator = 0;
+    function page_icon_animation() {
+        // Check window width > 768px
+        if (iteration < text[alternator].length && $(window).width() > 650) {
+            document.getElementById("page_title").innerHTML += text[alternator].charAt(iteration);
+            iteration++;
+            timeoutID = setTimeout(page_icon_animation, 50);
+        }
+    }
+
+    $("#page_title").mouseenter(() => {
+        page_icon_animation();
+    });
+    $("#page_title").mouseleave(() => {
+        clearTimeout(timeoutID);
+        iteration = 1;
+        alternator = 1 - alternator;
+        $("#page_title").text("Z");
+    });
+        
 });
 
 // Remove the script tag

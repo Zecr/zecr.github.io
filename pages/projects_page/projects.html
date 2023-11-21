@@ -8,8 +8,8 @@
         <div id="title_section">
             <div id="main_title">What have I made?</div>
             <p id="sub_title">
-                Some simple projects. <br />
-                But I think that what I <u>will</u> make in the future will be more interesting.
+                Some simple projects <br />
+                But I think that what I will make in the future is going to be more interesting
             </p>
         </div>
 
@@ -27,19 +27,21 @@
                     HTMX) and it's hosted on GitHub Pages which is free to use.
                     <br />
                     <br />
-                    I had quite a lot of fun designing the animations and layout of this site. I hope you like it as
-                    well.
+                    I started making this a few days ago, and I am having a lot of fun designing the animations and
+                    layout of this site. I hope you like it as well.
                     <br />
                     <br />
                     <span id="light_dark_msg">
                         <script>
                             if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
                                 // User prefers light color scheme
-                                $("#light_dark_msg").html("<b>P.S.</b> Have you tried viewing this site in dark mode?");
+                                $("#light_dark_msg").html(
+                                    "<b>P.S.</b> Have you tried viewing this site with your browser in dark mode?"
+                                );
                             } else {
                                 // User prefers dark color scheme
                                 $("#light_dark_msg").html(
-                                    "<b>P.S.</b> Have you tried viewing this site in light mode?"
+                                    "<b>P.S.</b> Have you tried viewing this site with your browser in light mode?"
                                 );
                             }
                             document.currentScript.remove();
