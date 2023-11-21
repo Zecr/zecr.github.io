@@ -1,0 +1,9 @@
+#project_portfolio img {
+    content: url("/assets/images/project_portfolio_dark.png")
+}
+
+@media (prefers-color-scheme: light) {
+    #project_portfolio img {
+        content: url("/assets/images/project_portfolio_light.png")
+    }
+}

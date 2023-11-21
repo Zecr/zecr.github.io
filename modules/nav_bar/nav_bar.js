@@ -79,6 +79,15 @@ $(document).ready(() => {
     $("main").on("htmx:afterSwap", (e) => {
         $("main").animate({ opacity: 1 }, 500);
     });
+
+    // Header shade after scroll
+    $(window).scroll(() => {
+        if ($(window).scrollTop() > 0) {
+            $("header").addClass("header_shade");
+        } else {
+            $("header").removeClass("header_shade");
+        }
+    });
 });
 
 // Remove the script tag

@@ -1,0 +1,46 @@
+.tile_container {
+    margin-top: 1em;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+}
+
+.tile {
+    text-align: center;
+    border: 1px solid transparent;
+    padding: 2em 3em;
+
+    color: white;
+    text-decoration: none;
+
+    transition: cubic-bezier(0, 0.5, 0, 1) 0.5s;
+}
+
+.tile:hover {
+    border: 1px solid white;
+}
+
+.tile svg path {
+    transition: cubic-bezier(0, 0.5, 0, 1) 0.5s;
+}
+
+.tile_icon {
+    width: 5em;
+    fill: white;
+}
+
+@media (prefers-color-scheme: light) {
+    .tile {
+        color: black;
+    }
+
+    .tile:hover {
+        border: 1px solid black;
+    }
+
+    .tile_icon {
+        fill: black;
+    }
+}

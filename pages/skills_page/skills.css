@@ -1,0 +1,62 @@
+/* For the person snooping around here:
+ * Yes, I know that the logo colours are not the official hues used.
+ * This is deliberate because it looks better with this design
+ * (If I used the official colours then the contrast and other stuff just doesn't look pleasant)
+ */
+
+#html:hover {
+    background-color: rgb(255 0 0 / 5%);
+}
+
+#html:hover svg {
+    fill: #e44d26;
+}
+
+#php:hover {
+    background-color: #697bcd2e;
+}
+
+#php:hover svg {
+    fill: #697bcd;
+}
+
+#css:hover {
+    background-color: #264de41c;
+}
+
+#css:hover svg {
+    fill: #264de4;
+
+}
+
+#python:hover {
+    background-color: #ffe7702e;
+}
+
+#python:hover #python_icon_top_half {
+    fill: #3771a1;
+}
+
+#python:hover #python_icon_bottom_half {
+    fill: #ffe770;
+}
+
+#java:hover {
+    background-color: #eb1f240f;
+}
+
+#java:hover #java_icon_top_half {
+    fill: #ec2025;
+}
+
+#java:hover #java_icon_bottom_half {
+    fill: #0d8ac7;
+}
+
+#javascript:hover {
+    background-color: #ffde000f;
+}
+
+#javascript:hover svg {
+    fill: #f3d400;
+}

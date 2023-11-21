@@ -6,20 +6,20 @@
     </head>
     <body>
         <div id="title_section">
-            <div id="main_title">My portfolio</div>
+            <div id="main_title">What have I made?</div>
             <p id="sub_title">
-                A few examples of what I have made. But I think that what I <u>will</u> make in the future will be more
-                interesting. <br />
-                Note: Site construction in progress; some pages are incomplete/broken.
+                Some simple projects. <br />
+                But I think that what I <u>will</u> make in the future will be more interesting.
             </p>
         </div>
 
         <div id="project_portfolio" class="info_section">
-            <img src="/assets/images/project_portfolio.png" alt="Portfolio Project Image" />
+            <img alt="Portfolio Project Image" />
+            <!-- Image source is in CSS -->
             <div class="description_text">
                 <h1>Portfolio Website</h1>
                 <p>
-                    Hey look! The image is kind of like inception!
+                    Hey look! It's the webpage you're currently on!
                     <br />
                     <br />
                     This website is my first attempt at creating a portfolio website, hopefully I did an adequate job.
@@ -29,6 +29,22 @@
                     <br />
                     I had quite a lot of fun designing the animations and layout of this site. I hope you like it as
                     well.
+                    <br />
+                    <br />
+                    <span id="light_dark_msg">
+                        <script>
+                            if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+                                // User prefers light color scheme
+                                $("#light_dark_msg").html("<b>P.S.</b> Have you tried viewing this site in dark mode?");
+                            } else {
+                                // User prefers dark color scheme
+                                $("#light_dark_msg").html(
+                                    "<b>P.S.</b> Have you tried viewing this site in light mode?"
+                                );
+                            }
+                            document.currentScript.remove();
+                        </script>
+                    </span>
                 </p>
             </div>
         </div>
