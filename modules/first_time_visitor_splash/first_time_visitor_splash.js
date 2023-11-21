@@ -27,7 +27,7 @@ if (localStorage.getItem("zecr_last_visit_time")) {
                 ...or did you just come back for the "breathing bubbles" in the background?`
             );
         } else if (visit_count <= 5) {
-            $("#main_title").text("\"You're back again... how odd\" Edwin thinks to himself.");
+            $("#main_title").text('"You\'re back again... how odd" Edwin thinks to himself.');
             $("#sub_title").html(
                 `So, I'm pretty sure that this site only has a few pages... <br>
                 ...did I accidentally make something really interesting?`
@@ -43,7 +43,7 @@ if (localStorage.getItem("zecr_last_visit_time")) {
 
         // Update visit count only if over 2 hours have passed since last visit
         // (60 * 60 * 1000 = 3600000 = 1 hour)
-        if (time_diff > (3600000) * 2) {
+        if (time_diff > 3600000 * 2) {
             localStorage.setItem("zecr_visit_count", visit_count + 1);
         }
 
@@ -54,11 +54,19 @@ if (localStorage.getItem("zecr_last_visit_time")) {
     $("body").css("visibility", "hidden");
 
     $("main").on("loading_complete", function () {
+        // Save previous text
+        let main_title = $("#main_title").text();
+        let sub_title = $("#sub_title").html();
+
+        // Change text
+        $("#main_title").text("Why, hello there.");
         $("#sub_title").html(
-            `It seems that you've somehow stumbled upon my personal website. An accident perhaps... or perhaps not? <br> 
+            `It seems that you've somehow stumbled upon my personal website. An accident perhaps... or perhaps not? <br> <br>
             Anyways, I'm glad you're here. Click the button below to learn a bit more about me!`
         );
 
+        // $("#title_section").css("text-align", "center");
+        $(".info_section").css("display", "none");
         $("#main_title").css("visibility", "visible");
         $("#sub_title").css("visibility", "visible");
         $("#background").css("visibility", "visible");
@@ -75,8 +83,9 @@ if (localStorage.getItem("zecr_last_visit_time")) {
 
         // Button on click = Animate splash screen away and change home text
         $("#splash_button").click(function () {
-            $("#main_title").text("Hello!");
-            $("#sub_title").html(`My name is Edwin Zhou, a recent graduate from the University of British Columbia. <br>`);
+            // Restore previous text
+            $("#main_title").text(main_title);
+            $("#sub_title").html(sub_title);
 
             $("body").css({
                 visibility: "unset",
@@ -92,6 +101,7 @@ if (localStorage.getItem("zecr_last_visit_time")) {
             );
 
             $("body").css("opacity", "unset");
+            $(".info_section").css("display", "flex");
 
             localStorage.setItem("zecr_last_visit_time", new Date());
             localStorage.setItem("zecr_visit_count", 0);

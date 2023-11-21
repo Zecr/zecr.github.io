@@ -40,12 +40,31 @@ nav a.active {
     text-shadow: 0px 0px 3px white, 0px 0px 10px white, 0px 0px 18px white;
 }
 
+@media (prefers-color-scheme: light) {
+    nav a {
+        color: black;
+    }
+
+    nav a:hover {
+        color: #0086ff;
+    }
+
+    nav a.active {
+        color: #0086ff;
+        text-shadow: 0px 0px 18px #0086ff;
+    }
+
+    #page_load_error_svg {
+        fill: black;
+    }
+}
+
 #nav_load_error_message {
     justify-content: center;
     align-items: center;
 }
 
-#nav_load_error_message img {
+#nav_load_error_message svg {
     width: 15em;
 }
 

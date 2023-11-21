@@ -18,7 +18,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    /* background: rgba(0, 0, 0, 0.5); */
 }
 
 #mouse_highlight_circle {
@@ -31,8 +30,17 @@
     height: 50px;
 
     background-color: white;
-    border: 1px solid white;
     border-radius: 50%;
 
     pointer-events: none;
+}
+
+@media (prefers-color-scheme: light) {
+    #mouse_highlight_circle {
+        background-color: #005aff;
+    }
+    
+    #background::after {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
 }

@@ -27,17 +27,28 @@
     color: black;
 }
 
+@media (prefers-color-scheme: light) {
+    #splash_button {
+        border: 1px solid black;
+    }
+
+    #splash_button:hover {
+        background-color: black;
+        color: white;
+    }
+}
+
 @media (max-height: 770px) {
     #splash_button {
-        position: relative;
-        top: 0;
+        position: static;
+        transform: unset;
     }
 }
 
 @media (max-height: 550px) {
     #splash_joke {
         position: relative;
-        top: 3em;
+        top: 2em;
         bottom: unset;
     }
 }
