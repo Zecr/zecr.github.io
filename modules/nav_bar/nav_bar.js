@@ -9,7 +9,7 @@ if (current_tab == undefined) {
 // Add CSS dependency to the page
 document.head.insertAdjacentHTML(
     "beforeend",
-    `<link hx-preserve="true" rel="stylesheet" href="modules/nav_bar/nav_bar.css">`
+    `<link hx-preserve="true" rel="stylesheet" href="/modules/nav_bar/nav_bar.css">`
 );
 
 // Pages to be added to the nav bar

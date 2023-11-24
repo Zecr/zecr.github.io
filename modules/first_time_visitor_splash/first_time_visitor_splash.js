@@ -4,21 +4,30 @@
 // Add CSS dependency to the page
 document.head.insertAdjacentHTML(
     "beforeend",
-    `<link rel="stylesheet" hx-preserve="true" href="modules/first_time_visitor_splash/first_time_visitor_splash.css">`
+    `<link rel="stylesheet" hx-preserve="true" href="/modules/first_time_visitor_splash/first_time_visitor_splash.css">`
 );
 
-if (localStorage.getItem("zecr_last_visit_time")) {
-    // Check if over 6 hours have passed since last visit
-    let last_visit_time = new Date(localStorage.getItem("zecr_last_visit_time"));
-    let current_time = new Date();
+$("main").on("loading_complete", function () {
+    var visit_count = parseInt(localStorage.getItem("zecr_visit_count") || 0);
+    var time_diff = new Date() - new Date(localStorage.getItem("zecr_last_visit_time") || 0);
 
-    // Milliseconds
-    let time_diff = current_time - last_visit_time;
+    // Only activate splash screen if over 2 hours have passed since last visit
+    // (60 * 60 * 1000 = 3600000 = 1 hour)
+    if (time_diff > 3600000 * 2) {
+        // Hide body and show splash screen
+        $("body").css("visibility", "hidden");
 
-    window.onload = function () {
-        let visit_count = parseInt(localStorage.getItem("zecr_visit_count"));
+        // Save previous text
+        let main_title = $("#main_title").text();
+        let sub_title = $("#sub_title").html();
+
+        // Change text based on visit count
         if (visit_count == 0) {
-            // Initial visit do nothing
+            $("#main_title").text("Why, hello there.");
+            $("#sub_title").html(
+                `It seems that you've somehow stumbled upon my personal website. An accident perhaps... or perhaps not? <br> <br>
+            Anyways, I'm glad you're here. Click the button below to learn a bit more about me!`
+            );
         } else if (visit_count <= 3) {
             $("#main_title").text("Edwin says: Welcome back!");
             $("#sub_title").html(
@@ -41,31 +50,7 @@ if (localStorage.getItem("zecr_last_visit_time")) {
             );
         }
 
-        // Update visit count only if over 2 hours have passed since last visit
-        // (60 * 60 * 1000 = 3600000 = 1 hour)
-        if (time_diff > 3600000 * 2) {
-            localStorage.setItem("zecr_visit_count", visit_count + 1);
-        }
-
-        // Update time
-        localStorage.setItem("zecr_last_visit_time", new Date());
-    };
-} else {
-    $("body").css("visibility", "hidden");
-
-    $("main").on("loading_complete", function () {
-        // Save previous text
-        let main_title = $("#main_title").text();
-        let sub_title = $("#sub_title").html();
-
-        // Change text
-        $("#main_title").text("Why, hello there.");
-        $("#sub_title").html(
-            `It seems that you've somehow stumbled upon my personal website. An accident perhaps... or perhaps not? <br> <br>
-            Anyways, I'm glad you're here. Click the button below to learn a bit more about me!`
-        );
-
-        // $("#title_section").css("text-align", "center");
+        // Make sure splash screen is visible
         $(".info_section").css("display", "none");
         $("#main_title").css("visibility", "visible");
         $("#sub_title").css("visibility", "visible");
@@ -77,38 +62,33 @@ if (localStorage.getItem("zecr_last_visit_time")) {
         button.innerHTML = "Enter Site";
         $("#sub_title").after(button);
 
+        // Insert joke after button
         $("#splash_button").after(
             `<div id='splash_joke'>By clicking the button above, you consent to the use of cookies and malware on your device. Just kidding about the malware.</div>`
         );
 
         // Button on click = Animate splash screen away and change home text
         $("#splash_button").click(function () {
-            // Restore previous text
+            // Restore previous text and styling
             $("#main_title").text(main_title);
             $("#sub_title").html(sub_title);
-
-            $("body").css({
-                visibility: "unset",
-                opacity: "0",
-            });
+            $("body").css({ visibility: "unset", opacity: "0" });
 
             // Fade in body
-            $("body").animate(
-                {
-                    opacity: "1",
-                },
-                1000
-            );
-
+            $("body").animate({ opacity: "1" }, 1000);
             $("body").css("opacity", "unset");
             $(".info_section").css("display", "flex");
 
-            localStorage.setItem("zecr_last_visit_time", new Date());
-            localStorage.setItem("zecr_visit_count", 0);
+            localStorage.setItem("zecr_visit_count", visit_count + 1);
+
+            // Remove splash screen
             $(this).remove();
             $("#splash_joke").remove();
         });
-    });
-}
+    }
+
+    // Update visit time
+    localStorage.setItem("zecr_last_visit_time", new Date());
+});
 
 document.currentScript.remove();

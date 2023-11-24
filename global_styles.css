@@ -31,7 +31,7 @@ header {
 
 /* Controller is in nav_bar.js */
 .header_shade {
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.75);
 }
 
 @media (prefers-color-scheme: light) {
