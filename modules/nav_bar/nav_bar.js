@@ -42,6 +42,7 @@ $(nav_bar).on("click", ".nav_item", (e) => {
     $(e.target).addClass("active");
 });
 
+// Show error message and graphic on HTMX failure
 $(nav_bar).on("htmx:responseError", (e) => {
     $("main").html(`
         <div id="nav_load_error_message" class="info_section">

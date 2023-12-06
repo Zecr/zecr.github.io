@@ -60,3 +60,11 @@
 #javascript:hover svg {
     fill: #f3d400;
 }
+
+#sql:hover {
+    background-color: #f291111c;
+}
+
+#sql:hover svg {
+    fill: #f29111;
+}
