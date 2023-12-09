@@ -42,11 +42,11 @@ $("main").on("loading_complete", function () {
                 ...did I accidentally make something really interesting?`
             );
         } else {
-            $("#main_title").text("Edwin has left the site...");
+            $("#main_title").text("Back again, eh? Stat-bot... activate!");
             $("#sub_title").html(
-                `Hello I'm stat-bot while my master is away <br> <br>
+                `Hello I'm stat-bot <br> <br>
                 I see this is your ${visit_count}th visit to this site. <br>
-                End of program, press any key to continue...`
+                End of program, press button below to continue...`
             );
         }
 

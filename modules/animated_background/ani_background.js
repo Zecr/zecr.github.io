@@ -128,5 +128,32 @@ document.addEventListener("mousemove", function (e) {
     );
 });
 
+// Add event listener (If escape button pressed, add style tag to head)
+// *:not(#background) {
+//     opacity: 0;
+// }
+
+document.addEventListener("keydown", function (e) {
+    if (e.key == "Escape") {
+        document.head.insertAdjacentHTML(
+            "beforeend",
+            `
+            <style id="hide_everything">
+            body > *:not(#background) {
+                display: none;
+            }
+            </style>
+            `
+        );
+        document.addEventListener("mousemove", function (e) {
+            if (document.getElementById("hide_everything")) {
+                document.getElementById("hide_everything").remove();
+                // Remove this event listener
+                this.removeEventListener("mousemove", arguments.callee);
+            }
+        });
+    }
+});
+
 // Remove the script tag
 document.currentScript.remove();
