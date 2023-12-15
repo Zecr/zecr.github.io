@@ -1,57 +1,93 @@
 // WORK IN PROGRESS
 
+function center_tile(enableBoolean, tile, boundingClient) {
+    const offsetX = window.innerWidth / 2 - tile.offsetWidth / 2 - boundingClient.left;
+    const offsetY = window.innerHeight / 2 - tile.offsetHeight / 2 - boundingClient.top;
+    if (enableBoolean) {
+        tile.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+
+        setTimeout(() => {
+            tile_transition(true, tile);
+        }, 500);
+    } else {
+        tile_transition(false, tile, offsetX, offsetY);
+
+        setTimeout(() => {
+            tile.style.transform = "";
+        }, 500);
+    }
+}
+
+function tile_transition(enableBoolean, tile, offX, offY) {
+    tile.style.transitionDuration = "0s";
+
+    if (enableBoolean) {
+        Object.assign(tile.style, {
+            transform: "",
+            position: "absolute",
+            top: `${window.innerHeight / 2 - tile.offsetHeight / 2}px`,
+            left: `${window.innerWidth / 2 - tile.offsetWidth / 2}px`,
+        });
+    } else {
+        Object.assign(tile.style, {
+            transform: `translate(${offX}px, ${offY}px)`,
+            position: "",
+            top: "",
+            left: "",
+        });
+    }
+
+    setTimeout(() => {
+        tile.style.transitionDuration = "";
+    }, 20);
+}
+
+function tile_fade(enableBoolean, tiles) {
+    if (enableBoolean) {
+        tiles.forEach((tile) => {
+            tile.style.opacity = "0";
+            tile.style.pointerEvents = "none";
+        });
+    } else {
+        tiles.forEach((tile) => {
+            tile.style.opacity = "";
+            tile.style.pointerEvents = "";
+        });
+    }
+}
 
 // Select all the tiles
 const tiles = document.querySelectorAll(".tile");
 
 // Add a click event listener to each tile
-tiles.forEach((tile) => {
+tiles.forEach((tile, index) => {
     // Add a state to the tile
     tile.isExpanded = false;
+    tile.initialBoundingRect = null;
+    const otherTiles = [...tiles].filter((_, i) => i !== index);
 
     tile.addEventListener("click", function () {
+        const tileBoundingRect = tile.getBoundingClientRect();
         // If the tile is expanded, revert it to the previous state
         if (tile.isExpanded) {
-            tile.style.transform = "";
-            const description = tile.querySelector(".description");
-            if (description) {
-                description.style.display = "";
-            }
-            tiles.forEach((otherTile) => {
-                otherTile.style.opacity = "";
-                // make unselected tiles clickable again
-                otherTile.style.pointerEvents = "";
-            });
+            center_tile(false, tile, tile.initialBoundingRect);
+
+            setTimeout(() => {
+                tile_fade(false, otherTiles);
+            }, 500);
+
             tile.isExpanded = false;
         } else {
-            // If the tile is not expanded, hide the other tiles
-            tiles.forEach((otherTile) => {
-                if (otherTile !== tile) {
-                    otherTile.style.opacity = "0";
-                    // make unselected tiles unclickable
-                    otherTile.style.pointerEvents = "none";
-                }
-            });
+            // Save current position of tile
+            tile.initialBoundingRect = tileBoundingRect;
+            tile_fade(true, otherTiles);
 
-            // After a delay of 0.3 seconds, move the clicked tile to the center of the page
+            // After animation has finished, move the clicked tile to the center of the page
             setTimeout(() => {
-                const centerX = window.innerWidth / 2 - tile.offsetWidth / 2;
-                const centerY = window.innerHeight / 2 - tile.offsetHeight / 2;
-                const rect = tile.getBoundingClientRect();
-                const offsetX = centerX - rect.left;
-                const offsetY = centerY - rect.top;
-                tile.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-                tile.isExpanded = true;
+                center_tile(true, tile, tileBoundingRect);
+            }, 500);
 
-                // Replace the transform centering with display:relative centering "calc(50% - elementWidth/2)"
-                setTimeout(() => {
-                    tile.style.transform = '';
-                    tile.display = 'relative';
-                    tile.style.left = 'calc(50% - 7.5em)';
-                    tile.style.top = '50%';
-                    /// ... I think I need to find another approach
-                }, 300);
-            }, 300);
+            tile.isExpanded = true;
         }
     });
 });

@@ -128,11 +128,7 @@ document.addEventListener("mousemove", function (e) {
     );
 });
 
-// Add event listener (If escape button pressed, add style tag to head)
-// *:not(#background) {
-//     opacity: 0;
-// }
-
+// Add event listener (If escape button pressed, hide everything except the background)
 document.addEventListener("keydown", function (e) {
     if (e.key == "Escape") {
         document.head.insertAdjacentHTML(
@@ -145,12 +141,14 @@ document.addEventListener("keydown", function (e) {
             </style>
             `
         );
+        mouseCircle.hidden = true;
         document.addEventListener("mousemove", function (e) {
             if (document.getElementById("hide_everything")) {
                 document.getElementById("hide_everything").remove();
                 // Remove this event listener
                 this.removeEventListener("mousemove", arguments.callee);
             }
+            mouseCircle.hidden = false;
         });
     }
 });
