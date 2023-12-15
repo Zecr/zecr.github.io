@@ -18,7 +18,7 @@
     transition: cubic-bezier(0, 0.5, 0, 1) 0.5s;
 }
 
-.tile:hover {
+.tile:hover, .tile.selected {
     border: 1px solid white;
 }
 
@@ -33,7 +33,9 @@
 
 .tile .description {
     display: none;
+    margin-top: 1em;
     
+    transition: cubic-bezier(0, 0.5, 0, 1) 0.5s;
 }
 
 @media (prefers-color-scheme: light) {
