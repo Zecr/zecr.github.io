@@ -54,23 +54,41 @@ function tile_fade(enableBoolean, tiles) {
     }
 }
 
-async function tile_expand(enableBoolean, tile) {
+async function tile_expand(enableBoolean, tile) {    
     if (enableBoolean) {
         tile.initialWidth = getComputedStyle(tile).width;
         tile.initialHeight = getComputedStyle(tile).height;
+        var desc_height = await get_description_height(tile);
 
         tile.style.width = tile.initialWidth;
         tile.style.height = tile.initialHeight;
         await delay(20);
         tile.style.width = "90%";
-        tile.style.height = "12em";
+        tile.style.height = desc_height;
+        await delay(500);
+
+        description_show(true, tile);
     } else {
+        await description_show(false, tile);
+
         tile.style.width = tile.initialWidth;
         tile.style.height = tile.initialHeight;
         await delay(500);
         tile.style.width = "";
         tile.style.height = "";
     }
+}
+
+async function get_description_height(tile) {
+    var description = tile.querySelector(".description");
+    tile.style.transitionDuration = "0s";
+    description.style.opacity = "0";
+    description.style.display = "block";
+    var expanded_height = getComputedStyle(tile).height;;
+    description.style.display = "none";
+    description.style.opacity = "";
+    tile.style.transitionDuration = "";
+    return expanded_height;
 }
 
 async function description_show(enableBoolean, tile) {
@@ -80,16 +98,18 @@ async function description_show(enableBoolean, tile) {
         description.style.display = "block";
         await delay(20);
         description.style.opacity = "";
+        void tile.offsetHeight;
     } else {
         description.style.opacity = "0";
         await delay(500);
-        description.style.display = "none";
+        description.style.display = "";
         description.style.opacity = "";
+        void tile.offsetHeight;
     }
 }
 
 // Select all the tiles
-const tiles = document.querySelectorAll(".tile");
+var tiles = document.querySelectorAll(".tile");
 
 // Add a click event listener to each tile
 tiles.forEach((tile, index) => {
@@ -105,13 +125,9 @@ tiles.forEach((tile, index) => {
         const tileBoundingRect = tile.getBoundingClientRect();
         // If the tile is expanded, revert it to the previous state
         if (tile.isExpanded) {
-            // get child element with .description and set display to none
-            tile.querySelector(".description").style.display = "none";
-
             topTileY = tile.getBoundingClientRect().top;
-            tile_expand(false, tile);
+            await tile_expand(false, tile);
 
-            await delay(500);
             center_tile(false, tile, tile.initialBoundingRect, otherTiles);
 
             await delay(500);
@@ -130,14 +146,12 @@ tiles.forEach((tile, index) => {
             await delay(500);
             center_tile(true, tile, tileBoundingRect, otherTiles);
             await delay(500);
-            tile_expand(true, tile);
-            await delay(500);
-            // get child element with .description and set display to block
-            description_show(true, tile);
+            tile_expand(true, tile);            
 
             tile.isExpanded = true;
         }
 
+        await delay(200);
         // Re-enable pointer events on all tiles
         tiles.forEach(tile => tile.style.pointerEvents = "");
     });

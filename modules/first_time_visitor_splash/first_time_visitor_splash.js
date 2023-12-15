@@ -4,7 +4,10 @@
 // Add CSS dependency to the page
 document.head.insertAdjacentHTML(
     "beforeend",
-    `<link rel="stylesheet" hx-preserve="true" href="/modules/first_time_visitor_splash/first_time_visitor_splash.css">`
+    `
+    <link rel="stylesheet" hx-preserve="true" href="/modules/first_time_visitor_splash/first_time_visitor_splash.css">
+    <style id="spash_hide">body {visibility: hidden;}</style>
+    `
 );
 
 $("main").on("loading_complete", function () {
@@ -14,9 +17,6 @@ $("main").on("loading_complete", function () {
     // Only activate splash screen if over 2 hours have passed since last visit
     // (60 * 60 * 1000 = 3600000 = 1 hour)
     if (time_diff > 3600000 * 2) {
-        // Hide body and show splash screen
-        $("body").css("visibility", "hidden");
-
         // Save previous text
         let main_title = $("#main_title").text();
         let sub_title = $("#sub_title").html();
@@ -72,7 +72,8 @@ $("main").on("loading_complete", function () {
             // Restore previous text and styling
             $("#main_title").text(main_title);
             $("#sub_title").html(sub_title);
-            $("body").css({ visibility: "unset", opacity: "0" });
+            $("#spash_hide").remove();
+            $("body").css({ opacity: "0" });
 
             // Fade in body
             $("body").animate({ opacity: "1" }, 1000);
@@ -85,6 +86,8 @@ $("main").on("loading_complete", function () {
             $(this).remove();
             $("#splash_joke").remove();
         });
+    } else {
+        $("#spash_hide").remove();
     }
 
     // Update visit time

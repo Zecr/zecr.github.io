@@ -43,7 +43,7 @@
         color: black;
     }
 
-    .tile:hover {
+    .tile:hover, .tile.selected {
         border: 1px solid black;
     }
 
