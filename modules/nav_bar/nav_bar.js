@@ -2,7 +2,7 @@
 
 // Get the query string
 let current_tab = Object.fromEntries(new URLSearchParams(window.location.search))["tab"];
-if (current_tab == undefined) {
+if (current_tab == undefined || !(current_tab in pages)) {
     current_tab = "Home";
 }
 
