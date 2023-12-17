@@ -12,6 +12,8 @@
     border: 1px solid transparent;
     padding: 2em 3em;
 
+    cursor: pointer;
+
     color: white;
     text-decoration: none;
 

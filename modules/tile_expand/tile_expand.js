@@ -120,6 +120,8 @@ tiles.forEach((tile, index) => {
 
     tile.addEventListener("click", async function () {
         // Disable pointer events on all tiles
+        tiles.forEach(tile => tile.style.pointerEvents = "none");
+        
         description_show(false, tile);
 
         const tileBoundingRect = tile.getBoundingClientRect();
