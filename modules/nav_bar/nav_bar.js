@@ -1,10 +1,5 @@
 // <script src="nav_bar/nav_bar.js" data-id="Home"></script>
 
-// Get the query string
-let current_tab = Object.fromEntries(new URLSearchParams(window.location.search))["tab"];
-if (current_tab == undefined || !(current_tab in pages)) {
-    current_tab = "Home";
-}
 
 // Add CSS dependency to the page
 document.head.insertAdjacentHTML(
@@ -19,6 +14,12 @@ var pages = {
     Skills: "/pages/skills_page/skills.html",
     Contact: "/pages/contact_page/contact.html",
 };
+
+// Get the query string
+let current_tab = Object.fromEntries(new URLSearchParams(window.location.search))["tab"];
+if (current_tab == undefined || !(current_tab in pages)) {
+    current_tab = "Home";
+}
 
 // Add nav items to the nav bar
 for (var key in pages) {
