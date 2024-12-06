@@ -6,12 +6,11 @@
 
 #customer_service:hover,
 #customer_service.selected {
-    background-color: rgba(191 127 0 / 5%);
+    background-color: rgba(191 127 0 / 20%);
 }
 
-#customer_service:not(:hover) svg,
-#customer_service:not(.selected) svg {
-    fill: black;
+#customer_service:not(:hover):not(.selected) svg path {
+    fill: inherit  !important;
 }
 
 #html:hover,
