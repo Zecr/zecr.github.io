@@ -4,66 +4,92 @@
  * (If I used the official colours then the contrast and other stuff just doesn't look pleasant)
  */
 
-#html:hover, #html.selected {
+#customer_service:hover,
+#customer_service.selected {
+    background-color: rgba(191 127 0 / 5%);
+}
+
+#customer_service:not(:hover) svg,
+#customer_service:not(.selected) svg {
+    fill: black;
+}
+
+#html:hover,
+#html.selected {
     background-color: rgb(255 0 0 / 5%);
 }
 
-#html:hover svg, #html.selected svg {
+#html:hover svg,
+#html.selected svg {
     fill: #e44d26;
 }
 
-#php:hover, #php.selected {
+#php:hover,
+#php.selected {
     background-color: #697bcd2e;
 }
 
-#php:hover svg, #php.selected svg {
+#php:hover svg,
+#php.selected svg {
     fill: #697bcd;
 }
 
-#css:hover, #css.selected {
+#css:hover,
+#css.selected {
     background-color: #264de41c;
 }
 
-#css:hover svg, #css.selected svg {
+#css:hover svg,
+#css.selected svg {
     fill: #264de4;
 }
 
-#python:hover, #python.selected {
+#python:hover,
+#python.selected {
     background-color: #ffe7702e;
 }
 
-#python:hover #python_icon_top_half, #python.selected #python_icon_top_half {
+#python:hover #python_icon_top_half,
+#python.selected #python_icon_top_half {
     fill: #3771a1;
 }
 
-#python:hover #python_icon_bottom_half, #python.selected #python_icon_bottom_half {
+#python:hover #python_icon_bottom_half,
+#python.selected #python_icon_bottom_half {
     fill: #ffe770;
 }
 
-#java:hover, #java.selected {
+#java:hover,
+#java.selected {
     background-color: #eb1f240f;
 }
 
-#java:hover #java_icon_top_half, #java.selected #java_icon_top_half {
+#java:hover #java_icon_top_half,
+#java.selected #java_icon_top_half {
     fill: #ec2025;
 }
 
-#java:hover #java_icon_bottom_half, #java.selected #java_icon_bottom_half {
+#java:hover #java_icon_bottom_half,
+#java.selected #java_icon_bottom_half {
     fill: #0d8ac7;
 }
 
-#javascript:hover, #javascript.selected {
+#javascript:hover,
+#javascript.selected {
     background-color: #ffde000f;
 }
 
-#javascript:hover svg, #javascript.selected svg {
+#javascript:hover svg,
+#javascript.selected svg {
     fill: #f3d400;
 }
 
-#sql:hover, #sql.selected {
+#sql:hover,
+#sql.selected {
     background-color: #f291111c;
 }
 
-#sql:hover svg, #sql.selected svg {
+#sql:hover svg,
+#sql.selected svg {
     fill: #f29111;
 }
