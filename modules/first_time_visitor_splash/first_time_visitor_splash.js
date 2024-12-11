@@ -23,7 +23,7 @@ $("main").on("loading_complete", function () {
 
         // Change text based on visit count
         if (visit_count == 0) {
-            $("#main_title").text("Why, hello there.");
+            $("#main_title").text("Hello there!");
             $("#sub_title").html(
                 `It seems that you've somehow stumbled upon my personal website. An accident perhaps... or perhaps not? <br> <br>
             Anyways, I'm glad you're here. Click the button below to learn a bit more about me!`
