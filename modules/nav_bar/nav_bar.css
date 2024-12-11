@@ -7,6 +7,11 @@
     font-family: "Trattatello";
     font-size: 2em;
     margin-left: 0.5em;
+    display: inline-block;
+}
+
+#page_title span {
+    display: inline-block;
 }
 
 nav {
@@ -70,5 +75,35 @@ nav a.active {
 @media (max-width: 1200px) {
     #nav_load_error_message div > * {
         text-align: center;
+    }
+
+    nav {
+        display: none;
+        opacity: 0;
+        flex-direction: column;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition: cubic-bezier(0.5, 0, 0.5, 1) 0.7s;
+    }
+
+    #compact_nav {
+        width: 3.5em;
+    }
+
+    #compact_nav svg rect {
+        fill: white;
+    }
+
+    @media (prefers-color-scheme: light) {
+        #compact_nav svg rect {
+            fill: black;
+        }
+    }
+
+    header {
+        transition: cubic-bezier(0.5, 0, 0.5, 1) 0.7s;
+        overflow: hidden;
     }
 }

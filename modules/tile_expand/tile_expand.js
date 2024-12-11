@@ -54,7 +54,7 @@ function tile_fade(enableBoolean, tiles) {
     }
 }
 
-async function tile_expand(enableBoolean, tile) {    
+async function tile_expand(enableBoolean, tile) {
     if (enableBoolean) {
         tile.initialWidth = getComputedStyle(tile).width;
         tile.initialHeight = getComputedStyle(tile).height;
