@@ -6,6 +6,7 @@
     justify-self: center;
     max-width: 80em;
     width: 100%;
+    margin: auto;
 }
 
 .resume_section_title .title{
@@ -14,9 +15,8 @@
     /* justify-self: center; */
 }
 
-.separator {
-    
-    height: 0.02em;
+.separator {    
+    height: 0.05em;
     background-color: white;
 }
 
