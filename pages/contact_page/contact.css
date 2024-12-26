@@ -12,9 +12,25 @@
     fill: #0094e1;
 }
 
+#email:hover {
+    background: #26cc5b29;
+}
+
+#email svg path {
+    stroke: #ffffff;
+}
+
+#email:hover svg path {
+    stroke: #37a557;
+}
+
 @media (prefers-color-scheme: light) {
     #linkedin:hover {
         background: hsl(200deg 100% 65% / 15%)
+    }
+
+    #email svg path {
+        stroke: #000000;
     }
 }
 
