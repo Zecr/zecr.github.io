@@ -1,160 +1,222 @@
-// WORK IN PROGRESS
-
-var topTileY;
+// Revised edition rewritten by AI
 
 function delay(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function center_tile(enableBoolean, tile, boundingClient, otherTiles) {
-    const offsetX = window.innerWidth / 2 - tile.offsetWidth / 2 - boundingClient.left;
-    const offsetY = topTileY - boundingClient.top;
-
-    if (enableBoolean) {
-        tile.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-
-        await delay(500);
-        tile_transition(true, tile, otherTiles);
-    } else {
-        tile_transition(false, tile, otherTiles, offsetX, offsetY);
-
-        await delay(20);
-        tile.style.transform = "";
-    }
+function getTopRowY(tiles) {
+  if (!tiles || tiles.length === 0) return 0;
+  return tiles[0].getBoundingClientRect().top;
 }
 
-async function tile_transition(enableBoolean, tile, otherTiles, offX, offY) {
-    tile.style.transitionDuration = "0s";
+async function center_tile(enableBoolean, tile, tiles, otherTiles) {
+  if (enableBoolean) {
+    // 1) Move the clicked tile to the visual center (with others visible)
+    const rect = tile.getBoundingClientRect();
+    const topRowY = getTopRowY(tiles);
+    const dx = window.innerWidth / 2 - rect.left - rect.width / 2;
+    const dy = topRowY - rect.top;
 
-    if (enableBoolean) {
-        otherTiles.forEach((tile) => {
-            tile.style.display = "none";
-        });
-        tile.style.transform = "";
-    } else {
-        tile.style.transform = `translate(${offX}px, ${offY}px)`;
-        otherTiles.forEach((tile) => {
-            tile.style.display = "";
-        });
-    }
+    tile.style.transform = `translate(${dx}px, ${dy}px)`;
+    await delay(500);
 
+    // 2) Hide other tiles without visual jumping (FLIP after hide)
+    await isolate_tile(tile, otherTiles);
+  } else {
+    // Bring the grid back and animate tile into its new spot (FLIP before/after show)
+    await reunite_tiles(tile, otherTiles);
     await delay(20);
-    tile.style.transitionDuration = "";
+    tile.style.transform = ""; // animate back to grid
+  }
+}
+
+async function isolate_tile(tile, otherTiles) {
+  // Hide others and snap the tile in place without visible jumps
+  tile.style.transitionDuration = "0s";
+  const before = tile.getBoundingClientRect();
+
+  otherTiles.forEach((t) => (t.style.display = "none"));
+
+  const after = tile.getBoundingClientRect();
+  const dx = before.left - after.left;
+  const dy = before.top - after.top;
+
+  // Counter the layout shift, then snap to the new layout position
+  tile.style.transform = `translate(${dx}px, ${dy}px)`;
+  void tile.offsetHeight;
+  tile.style.transform = ""; // snap (no animation)
+  tile.style.transitionDuration = "";
+}
+
+async function reunite_tiles(tile, otherTiles) {
+  // Show others using FLIP so the tile doesn't jump
+  const before = tile.getBoundingClientRect();
+  otherTiles.forEach((t) => (t.style.display = ""));
+  const after = tile.getBoundingClientRect();
+
+  const dx = before.left - after.left;
+  const dy = before.top - after.top;
+
+  tile.style.transitionDuration = "0s";
+  tile.style.transform = `translate(${dx}px, ${dy}px)`;
+  void tile.offsetHeight; // reflow
+  tile.style.transitionDuration = ""; // restore transitions
 }
 
 function tile_fade(enableBoolean, tiles) {
-    if (enableBoolean) {
-        tiles.forEach((tile) => {
-            tile.style.opacity = "0";
-        });
-    } else {
-        tiles.forEach((tile) => {
-            tile.style.opacity = "";
-        });
-    }
+  if (enableBoolean) {
+    tiles.forEach((tile) => {
+      tile.style.opacity = "0";
+    });
+  } else {
+    tiles.forEach((tile) => {
+      tile.style.opacity = "";
+    });
+  }
 }
 
 async function tile_expand(enableBoolean, tile) {
-    if (enableBoolean) {
-        tile.initialWidth = getComputedStyle(tile).width;
-        tile.initialHeight = getComputedStyle(tile).height;
-        var desc_height = await get_description_height(tile);
+  const description = tile.querySelector(".description");
 
-        tile.style.width = tile.initialWidth;
-        tile.style.height = tile.initialHeight;
-        await delay(20);
-        tile.style.width = "90%";
-        tile.style.height = desc_height;
-        await delay(500);
+  if (enableBoolean) {
+    // Lock current size so we can animate width/height
+    const startW = getComputedStyle(tile).width;
+    const startH = getComputedStyle(tile).height;
+    tile.style.width = startW;
+    tile.style.height = startH;
+    await delay(20);
 
-        description_show(true, tile);
-    } else {
-        await description_show(false, tile);
-
-        tile.style.width = tile.initialWidth;
-        tile.style.height = tile.initialHeight;
-        await delay(500);
-        tile.style.width = "";
-        tile.style.height = "";
-    }
-}
-
-async function get_description_height(tile) {
-    var description = tile.querySelector(".description");
+    // Measure target expanded height at the expanded width (90%)
+    const prevTD = tile.style.transitionDuration;
     tile.style.transitionDuration = "0s";
-    description.style.opacity = "0";
+
+    const prevDescDisplay = description.style.display;
+    const prevDescOpacity = description.style.opacity;
+
     description.style.display = "block";
-    var expanded_height = getComputedStyle(tile).height;;
-    description.style.display = "none";
-    description.style.opacity = "";
-    tile.style.transitionDuration = "";
-    return expanded_height;
+    description.style.opacity = "0";
+
+    const prevW = tile.style.width;
+    tile.style.width = "90%";
+    const endH = getComputedStyle(tile).height;
+
+    // Reset to the starting state instantly
+    tile.style.width = prevW;
+    description.style.display = prevDescDisplay || "";
+    description.style.opacity = prevDescOpacity || "";
+    tile.style.transitionDuration = prevTD;
+    void tile.offsetHeight;
+
+    // Animate to expanded
+    tile.style.width = "90%";
+    tile.style.height = endH;
+    await delay(500);
+
+    await description_show(true, tile);
+  } else {
+    // Collapse to the current natural size (post-resize), not to a stale size
+    await description_show(false, tile);
+
+    const prevTD = tile.style.transitionDuration;
+    tile.style.transitionDuration = "0s";
+
+    // Snapshot current expanded size
+    const expandedW = getComputedStyle(tile).width;
+    const expandedH = getComputedStyle(tile).height;
+
+    // Measure natural collapsed size with styles cleared
+    tile.style.width = "";
+    tile.style.height = "";
+    const collapsedW = getComputedStyle(tile).width;
+    const collapsedH = getComputedStyle(tile).height;
+
+    // Jump back to expanded instantly
+    tile.style.width = expandedW;
+    tile.style.height = expandedH;
+
+    tile.style.transitionDuration = prevTD;
+    void tile.offsetHeight;
+
+    // Animate to the current collapsed size
+    tile.style.width = collapsedW;
+    tile.style.height = collapsedH;
+    await delay(500);
+
+    tile.style.width = "";
+    tile.style.height = "";
+  }
 }
 
 async function description_show(enableBoolean, tile) {
-    var description = tile.querySelector(".description");
-    if (enableBoolean) {
-        description.style.opacity = "0";
-        description.style.display = "block";
-        await delay(20);
-        description.style.opacity = "";
-        void tile.offsetHeight;
-    } else {
-        description.style.opacity = "0";
-        await delay(500);
-        description.style.display = "";
-        description.style.opacity = "";
-        void tile.offsetHeight;
-    }
+  const description = tile.querySelector(".description");
+  if (enableBoolean) {
+    description.style.opacity = "0";
+    description.style.display = "block";
+    await delay(20);
+    description.style.opacity = "";
+    void tile.offsetHeight;
+  } else {
+    description.style.opacity = "0";
+    await delay(500);
+    description.style.display = "";
+    description.style.opacity = "";
+    void tile.offsetHeight;
+  }
 }
 
 // Select all the tiles
-var tiles = document.querySelectorAll(".tile");
+const tiles = document.querySelectorAll(".tile");
 
 // Add a click event listener to each tile
 tiles.forEach((tile, index) => {
-    // Add a state to the tile
-    tile.isExpanded = false;
-    tile.initialBoundingRect = null;
-    const otherTiles = [...tiles].filter((_, i) => i !== index);
+  tile.isExpanded = false;
+  const otherTiles = [...tiles].filter((_, i) => i !== index);
 
-    tile.addEventListener("click", async function () {
-        // Disable pointer events on all tiles
-        tiles.forEach(tile => tile.style.pointerEvents = "none");
-        
-        description_show(false, tile);
+  tile.addEventListener("click", async function () {
+    // Disable pointer events on all tiles
+    tiles.forEach((t) => (t.style.pointerEvents = "none"));
 
-        const tileBoundingRect = tile.getBoundingClientRect();
-        // If the tile is expanded, revert it to the previous state
-        if (tile.isExpanded) {
-            topTileY = tile.getBoundingClientRect().top;
-            await tile_expand(false, tile);
+    description_show(false, tile);
 
-            center_tile(false, tile, tile.initialBoundingRect, otherTiles);
+    if (tile.isExpanded) {
+      // Collapse details first
+      await tile_expand(false, tile);
 
-            await delay(500);
-            tile_fade(false, otherTiles);
-            tile.classList.remove("selected");
+      // Return to grid (robust even after resize)
+      await center_tile(false, tile, tiles, otherTiles);
 
-            tile.isExpanded = false;
-        } else {
-            // Save current position of tile
-            topTileY = tiles[0].getBoundingClientRect().top;
-            tile.initialBoundingRect = tileBoundingRect;
-            tile.classList.add("selected");
-            tile_fade(true, otherTiles, tile);
+      await delay(500);
+      tile_fade(false, otherTiles);
+      tile.classList.remove("selected");
+      tile.isExpanded = false;
+    } else {
+      tile.classList.add("selected");
+      tile_fade(true, otherTiles, tile);
 
-            // After animation has finished, move the clicked tile to the center of the page
-            await delay(500);
-            center_tile(true, tile, tileBoundingRect, otherTiles);
-            await delay(500);
-            tile_expand(true, tile);            
+      // Move to center and isolate
+      await delay(500);
+      await center_tile(true, tile, tiles, otherTiles);
 
-            tile.isExpanded = true;
-        }
+      // Expand
+      await delay(500);
+      await tile_expand(true, tile);
 
-        await delay(200);
-        // Re-enable pointer events on all tiles
-        tiles.forEach(tile => tile.style.pointerEvents = "");
-    });
+      tile.isExpanded = true;
+    }
+
+    await delay(200);
+    // Re-enable pointer events on all tiles
+    tiles.forEach((t) => (t.style.pointerEvents = ""));
+  });
+});
+
+// Optional: if you want to gracefully handle live resizing mid-expanded state,
+// you generally don't need to do anything special now because we re-measure on close.
+// But you can debounce a no-op to avoid thrashing work during resize:
+let _resizeTimer;
+window.addEventListener("resize", () => {
+  clearTimeout(_resizeTimer);
+  _resizeTimer = setTimeout(() => {
+    // Intentionally empty: close/open remains robust thanks to re-measuring.
+  }, 150);
 });
