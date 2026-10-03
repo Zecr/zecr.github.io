@@ -92,3 +92,90 @@
 #sql.selected svg {
     fill: #f29111;
 }
+
+/* Keep the tiles within the same width as the divider bar above them (see section_title.css) */
+.skill_group .tile_container {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 80em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 1200px) {
+    .skill_group .tile_container {
+        max-width: 35em;
+    }
+}
+
+.skill_group + .skill_group {
+    margin-top: 1em;
+}
+
+/* Fade the section titles and other groups out alongside the tiles when a tile is opened (tile_expand.js) */
+.skill_group,
+.skill_group .resume_section_title {
+    transition: opacity cubic-bezier(0, 0.5, 0, 1) 0.5s;
+}
+
+/* Hand-drawn stroke icons (IT & Systems tiles) */
+
+#windows_hardware:hover,
+#windows_hardware.selected {
+    background-color: rgb(58 160 255 / 12%);
+}
+
+#windows_hardware:hover svg,
+#windows_hardware.selected svg {
+    stroke: #3aa0ff;
+}
+
+#microsoft_365:hover,
+#microsoft_365.selected {
+    background-color: rgb(255 122 47 / 12%);
+}
+
+#microsoft_365:hover svg,
+#microsoft_365.selected svg {
+    stroke: #ff7a2f;
+}
+
+#active_directory_intune:hover,
+#active_directory_intune.selected {
+    background-color: rgb(138 125 255 / 12%);
+}
+
+#active_directory_intune:hover svg,
+#active_directory_intune.selected svg {
+    stroke: #8a7dff;
+}
+
+#remote_support:hover,
+#remote_support.selected {
+    background-color: rgb(47 208 160 / 12%);
+}
+
+#remote_support:hover svg,
+#remote_support.selected svg {
+    stroke: #2fd0a0;
+}
+
+#networking:hover,
+#networking.selected {
+    background-color: rgb(255 200 61 / 12%);
+}
+
+#networking:hover svg,
+#networking.selected svg {
+    stroke: #e0a800;
+}
+
+#ticketing_triage:hover,
+#ticketing_triage.selected {
+    background-color: rgb(255 95 126 / 12%);
+}
+
+#ticketing_triage:hover svg,
+#ticketing_triage.selected svg {
+    stroke: #ff5f7e;
+}

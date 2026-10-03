@@ -25,26 +25,30 @@ if (current_tab == undefined || !(current_tab in pages)) {
     current_tab = "Home";
 }
 
+// Page titles are set here as well as in each page's <head>, so the initial load and HTMX swaps agree
+function set_page_title(tab) {
+    document.title = `${tab} | Edwin Zhou`;
+}
+set_page_title(current_tab);
+
 // Add nav items to the nav bar
 for (var key in pages) {
-    if (current_tab == key) {
-        document.write(
-            `<a class="nav_item active" hx-get="${pages[key]}" hx-target="main" hx-replace-url="?tab=${key}"> ${key} </a>`
-        );
-    } else {
-        document.write(
-            `<a class="nav_item" hx-get="${pages[key]}" hx-target="main" hx-replace-url="?tab=${key}"> ${key} </a>`
-        );
-    }
+    // The real href lets the links work with middle click, copy link, and no JavaScript; HTMX takes over normal clicks
+    document.write(
+        `<a class="nav_item${current_tab == key ? " active" : ""}" href="?tab=${key}" hx-get="${pages[key]}" hx-target="main" hx-replace-url="?tab=${key}"> ${key} </a>`
+    );
 }
 
 // Add listener to nav items, when clicked, update the nav bar
 let nav_bar = document.currentScript.parentElement;
 
-// When element with class nav_item and parent of nav_bar is clicked, remove all "active" classes, then add to the clicked element
-$(nav_bar).on("click", ".nav_item", (e) => {
+// When any ?tab= link (nav item or a link inside a page) is clicked, update the active nav item and page title
+$(document).on("click", "a[href^='?tab=']", (e) => {
+    const tab = $(e.currentTarget).attr("href").replace("?tab=", "");
     $(".nav_item").removeClass("active");
-    $(e.target).addClass("active");
+    $(`.nav_item[href="?tab=${tab}"]`).addClass("active");
+    set_page_title(tab);
+    window.scrollTo(0, 0);
 });
 
 // Show error message and graphic on HTMX failure
@@ -73,6 +77,8 @@ $(nav_bar).on("htmx:responseError", (e) => {
 $(document).ready(() => {
     // Load the current tab
     $("main").load(pages[current_tab], function () {
+        // Let HTMX pick up any hx- links inside the freshly loaded page
+        htmx.process(this);
         // Notifies dependent modules that the page has finished loading
         this.dispatchEvent(new Event("loading_complete"));
     });
@@ -92,12 +98,14 @@ $(document).ready(() => {
     last_height = null;
     async function nav_click() {
         if (collapsed_nav_is_expanded) {
+            $("#compact_nav").attr("aria-expanded", "false");
             $("nav").css("opacity", "");
             $("header").css("height", last_height);
             await delay(700);
             $("header").css("height", "");
             $("nav").css("display", "");
         } else {
+            $("#compact_nav").attr("aria-expanded", "true");
             last_height = $("header").height();
             $("header").css("height", last_height);
             await delay(100);
@@ -114,14 +122,13 @@ $(document).ready(() => {
             // Collapse nav when the viewport is 1200px or less and not collapsed already
             $("nav").before(
                 `
-                <div id="compact_nav">
-                    <svg viewBox="0 0 512 512">
+                <button type="button" id="compact_nav" aria-label="Menu" aria-expanded="false">
+                    <svg viewBox="0 0 512 512" aria-hidden="true">
                         <rect width="352" height="32" x="80" y="96"/>
                         <rect width="352" height="32" x="80" y="240"/>
                         <rect width="352" height="32" x="80" y="384"/>
                     </svg>
-                </div>
-                
+                </button>
                 `
             );
 

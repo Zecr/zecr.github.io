@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head hx-head="merge">
-        <title>Skills</title>
+        <title>Skills | Edwin Zhou</title>
         <link rel="stylesheet" href="/pages/skills_page/skills.css" />
         <link rel="stylesheet" href="/style_bundles/icon_tiles.css" />
+        <link rel="stylesheet" href="/style_bundles/section_title.css" />
         <script src="/modules/tile_expand/tile_expand.js"></script>
     </head>
     <body>
         <div id="title_section">
             <div id="main_title">What can I do?</div>
-            <p id="sub_title">A lil bit of a lot of stuff apparantly</p>
+            <p id="sub_title">A lil bit of a lot of stuff apparently</p>
         </div>
 
-        <div class="tile_container">
-            <div id="customer_service" class="tile">
+        <div class="skill_group">
+            <div class="resume_section_title">
+                <div class="title">IT &amp; Systems</div>
+                <div class="separator"></div>
+            </div>
+            <div class="tile_container">
+            <div id="customer_service" class="tile" tabindex="0">
                 <!-- Original Icon: https://www.svgrepo.com/svg/230764/customer-service-info -->
                 <svg class="tile_icon" viewBox="0 0 512 512">
                     <path
@@ -116,13 +122,125 @@
                 </svg>
                 <div class="title">Customer Service</div>
                 <div class="description">
-                    Interacting with customers is a skill that takes a while to get just right. Experience is key in
-                    this area as each person is different and the best way to handle each customer will always vary.
-                    However, once you do get it down and find your rhythm on how to interact with different people, it
-                    can be quite a lot of fun.
+                    <p>
+                        Interacting with customers is a skill that takes a while to get just right. Experience is key,
+                        as each person is different and the best way to handle each customer will always vary.
+                    </p>
+                    <p>Once you find your rhythm with different people, it can be quite a lot of fun.</p>
                 </div>
             </div>
-            <div id="html" class="tile">
+            <div id="windows_hardware" class="tile" tabindex="0">
+                <!-- Icon drawn by hand for this site (no third-party source) -->
+                <svg class="tile_icon tile_icon_stroke" viewBox="0 0 24 24" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="12" rx="1.5" /><path d="M9 20h6M12 16v4" /><rect x="7" y="6.5" width="4" height="3" /><rect x="13" y="6.5" width="4" height="3" /><rect x="7" y="10.5" width="4" height="3" /><rect x="13" y="10.5" width="4" height="3" />
+                </svg>
+                <div class="title">Windows &amp; Hardware Support</div>
+                <div class="description">
+                    <p>
+                        Windows troubleshooting is a big part of my day. When a store's computer, printer, or POS
+                        system starts misbehaving, I'm often the first person to hear about it.
+                    </p>
+                    <p>
+                        Hardware gremlins usually turn out to have a surprisingly boring explanation, and tracking it
+                        down is oddly satisfying.
+                    </p>
+                    <p>I got an early start on this fixing printer and scanner problems at a university library.</p>
+                </div>
+            </div>
+            <div id="microsoft_365" class="tile" tabindex="0">
+                <!-- Icon drawn by hand for this site (no third-party source) -->
+                <svg class="tile_icon tile_icon_stroke" viewBox="0 0 24 24" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z" /><path d="M8.8 12l2.4 2.4 4-4.8" />
+                </svg>
+                <div class="title">Microsoft 365 &amp; Defender</div>
+                <div class="description">
+                    <!-- TODO(Edwin): Add specifics about how you use Microsoft 365 and Defender (e.g. Exchange, Teams, Defender alerts) if you want this tile to say more. -->
+                    <p>
+                        Microsoft 365 and Defender are part of the everyday toolkit in IT support, and I'm comfortable
+                        finding my way around them.
+                    </p>
+                    <p>
+                        My first brush with Office was helping students and library patrons install MS Office at UBC,
+                        and it has followed me around ever since.
+                    </p>
+                </div>
+            </div>
+            <div id="active_directory_intune" class="tile" tabindex="0">
+                <!-- Icon drawn by hand for this site (no third-party source) -->
+                <svg class="tile_icon tile_icon_stroke" viewBox="0 0 24 24" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="3" width="6" height="4" rx="1" /><path d="M12 7v4M5 11h14M5 11v3M12 11v3M19 11v3" /><rect x="2.5" y="14" width="5" height="4" rx="1" /><rect x="9.5" y="14" width="5" height="4" rx="1" /><rect x="16.5" y="14" width="5" height="4" rx="1" />
+                </svg>
+                <div class="title">Active Directory &amp; Intune</div>
+                <div class="description">
+                    <p>Getting people and machines set up properly is a regular part of my work:</p>
+                    <ul>
+                        <li>Account provisioning in Active Directory</li>
+                        <li>Device lifecycle and OS imaging, which is how a shiny new machine becomes a useful one</li>
+                        <li>Intune at a basic, familiar level, and I'm always happy to learn more</li>
+                    </ul>
+                    <p>There's something satisfying about getting someone set up with exactly the access they need.</p>
+                </div>
+            </div>
+            <div id="remote_support" class="tile" tabindex="0">
+                <!-- Icon drawn by hand for this site (no third-party source) -->
+                <svg class="tile_icon tile_icon_stroke" viewBox="0 0 24 24" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="12" rx="1.5" /><path d="M9 20h6M12 16v4" /><path d="M10 6.5v6l1.7-1.5 1.2 2.6 1.3-.6-1.2-2.6 2.3-.2z" />
+                </svg>
+                <div class="title">Remote Support</div>
+                <div class="description">
+                    <p>TeamViewer and Remote Desktop let me fix problems at a store without leaving my desk.</p>
+                    <p>Most hardware, software, and POS issues across 78 locations get resolved this way.</p>
+                    <p>
+                        It's also good practice at explaining what I'm doing while I do it, which helps the fix make
+                        sense to the person on the other end.
+                    </p>
+                </div>
+            </div>
+            <div id="networking" class="tile" tabindex="0">
+                <!-- Icon drawn by hand for this site (no third-party source) -->
+                <svg class="tile_icon tile_icon_stroke" viewBox="0 0 24 24" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="5" r="2.2" /><circle cx="5" cy="18" r="2.2" /><circle cx="19" cy="18" r="2.2" /><path d="M12 7.2v4M12 11.2L6.4 16.4M12 11.2l5.6 5.2" />
+                </svg>
+                <div class="title">Networking</div>
+                <div class="description">
+                    <p>I picked up the theory at university, and the practice at work.</p>
+                    <ul>
+                        <li><strong>Theory:</strong> routers, switches, and protocols</li>
+                        <li>
+                            <strong>Practice:</strong> DHCP configuration, wireless troubleshooting, and basic
+                            connectivity checks
+                        </li>
+                    </ul>
+                    <p>"The internet is down" is a more interesting problem than it sounds.</p>
+                </div>
+            </div>
+            <div id="ticketing_triage" class="tile" tabindex="0">
+                <!-- Icon drawn by hand for this site (no third-party source) -->
+                <svg class="tile_icon tile_icon_stroke" viewBox="0 0 24 24" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 7h16v3a2 2 0 0 0 0 4v3H4v-3a2 2 0 0 0 0-4z" /><path d="M14 7v10" stroke-dasharray="1.5 2" />
+                </svg>
+                <div class="title">Ticketing &amp; Triage</div>
+                <div class="description">
+                    <p>
+                        Requests from stores arrive through Jira, phone, and email, and my job is to keep all of them
+                        moving.
+                    </p>
+                    <p>
+                        Triage is the art of deciding what can be fixed on the spot and what should be escalated to a
+                        specialized team.
+                    </p>
+                    <p>Clear notes help whoever picks the ticket up next, and a good handoff is a small act of kindness.</p>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="skill_group">
+            <div class="resume_section_title">
+                <div class="title">Programming &amp; Web</div>
+                <div class="separator"></div>
+            </div>
+            <div class="tile_container">
+            <div id="html" class="tile" tabindex="0">
                 <!-- Original Icon: https://www.svgrepo.com/svg/473654/html5 -->
                 <svg class="tile_icon" viewBox="0 0 32 32">
                     <path
@@ -133,14 +251,19 @@
                 </svg>
                 <div class="title">HTML</div>
                 <div class="description">
-                    HTML has always been fun for me. I still remember using the browser dev tools back in elementary
-                    school to trick my teacher into thinking that there was a problem on one of the school websites. If
-                    you're dealing with web, you're dealing with HTML, and because of this I have used HTML in many of
-                    my assignments during university mostly to create websites such as my capstone or forum project, but
-                    also using it to create electron apps during my course in human computer interaction.
+                    <p>
+                        HTML has always been fun for me. I still remember using the browser dev tools back in
+                        elementary school to trick my teacher into thinking there was a problem on one of the school
+                        websites.
+                    </p>
+                    <p>If you're dealing with web, you're dealing with HTML. I've used it for:</p>
+                    <ul>
+                        <li>Many university assignments, including my capstone and forum projects</li>
+                        <li>Electron apps in my human computer interaction course</li>
+                    </ul>
                 </div>
             </div>
-            <div id="php" class="tile">
+            <div id="php" class="tile" tabindex="0">
                 <!-- Original Icon: https://www.svgrepo.com/svg/521302/php-16 -->
                 <svg class="tile_icon" viewBox="0 0 16 16">
                     <path
@@ -160,12 +283,14 @@
                 </svg>
                 <div class="title">PHP</div>
                 <div class="description">
-                    I started using PHP during my web development class in university. I have used it to create projects
-                    such as a forum website in the aforementioned class, and a manpower scheduling web-app for a local
-                    business during my capstone project.
+                    <p>I started using PHP during my web development class in university. I've used it to create:</p>
+                    <ul>
+                        <li>A forum website for that class</li>
+                        <li>A manpower scheduling web-app for a local business during my capstone project</li>
+                    </ul>
                 </div>
             </div>
-            <div id="css" class="tile">
+            <div id="css" class="tile" tabindex="0">
                 <!-- Original Icon: https://www.svgrepo.com/svg/508795/css3-02 -->
                 <svg class="tile_icon" viewBox="0 0 512 512">
                     <path
@@ -178,14 +303,23 @@
                 </svg>
                 <div class="title">CSS</div>
                 <div class="description">
-                    I kind of immediately fell in love with CSS when I first started using it as I think that styling
-                    and visuals make up a large part of the user experience in any application. I always strive to make
-                    my UI as clean and intuitive as possible, and if I have time, to add in fun animations that let's
-                    the website feel alive. (The animation that you have just triggered by clicking on this tile took
-                    quite a while to get exactly how I wanted it to look)
+                    <p>
+                        I kind of immediately fell in love with CSS, as styling and visuals make up a large part of the
+                        user experience in any application.
+                    </p>
+                    <p>
+                        I always strive to make my UI as clean and intuitive as possible and, if I have time, to add
+                        fun animations that let the website feel alive.
+                    </p>
+                    <p>
+                        <em>
+                            (The animation that you have just triggered by clicking on this tile took quite a while to
+                            get exactly how I wanted it to look.)
+                        </em>
+                    </p>
                 </div>
             </div>
-            <div id="python" class="tile">
+            <div id="python" class="tile" tabindex="0">
                 <!-- Original Icon: https://www.svgrepo.com/svg/512738/python-127 -->
                 <svg class="tile_icon" viewBox="0 0 20 20">
                     <path
@@ -210,14 +344,18 @@
                 </svg>
                 <div class="title">Python</div>
                 <div class="description">
-                    Python is a great programming language. The syntax is very intuitive, easy to write and read, and
-                    all in all a great language to use when you want to get something done quickly without too much
-                    concern for getting maximum performance. I have used Python in many of my assignments during
-                    university and have also used it to create some auto-grading exam questions during my time as a
-                    junior programmer at my university.
+                    <p>
+                        Python is a great programming language. The syntax is very intuitive, easy to write and read,
+                        and it's a great fit when you want to get something done quickly without too much concern for
+                        maximum performance.
+                    </p>
+                    <p>
+                        I've used Python in many university assignments, and to create auto-grading exam questions
+                        during my time as a junior software developer at UBC.
+                    </p>
                 </div>
             </div>
-            <div id="java" class="tile">
+            <div id="java" class="tile" tabindex="0">
                 <!-- Original Icon: https://www.svgrepo.com/svg/508921/java -->
                 <svg viewBox="0 0 512 512" class="tile_icon">
                     <path
@@ -267,14 +405,21 @@
                 </svg>
                 <div class="title">Java</div>
                 <div class="description">
-                    Java is the language that is taught in year 1 at UBCO (at least back when I attended) and is one of
-                    the languages I'm most familiar with. What I like about Java is that it's a strongly typed language,
-                    object oriented, but without a lot of the mess of pointers that comes with a similar language like C
-                    or C++. I have used Java in many of my assignments during university and used it to create a "tech
-                    support chatbot" during my software engineering class.
+                    <p>
+                        Java is the language that is taught in year 1 at UBCO (at least back when I attended) and is
+                        one of the languages I'm most familiar with.
+                    </p>
+                    <p>
+                        What I like about it: it's strongly typed and object oriented, without much of the mess of
+                        pointers that comes with languages like C or C++.
+                    </p>
+                    <p>
+                        I've used Java in many assignments, and to create a "tech support chatbot" during my software
+                        engineering class.
+                    </p>
                 </div>
             </div>
-            <div id="javascript" class="tile">
+            <div id="javascript" class="tile" tabindex="0">
                 <!-- Original Icon: https://www.svgrepo.com/svg/473670/javascript -->
                 <svg class="tile_icon" viewBox="0 0 32 32">
                     <path
@@ -283,16 +428,22 @@
                 </svg>
                 <div class="title">JavaScript</div>
                 <div class="description">
-                    Probably the language that I have the most experience developing in. Since so much of today's
-                    technology is web based, it was inevitable that I would run into this language eventually. Atwood's
-                    law states that "Any application that can be written in JavaScript, will eventually be written in
-                    JavaScript", and I think that's a pretty accurate statement. I have used JavaScript in many of my
-                    assignments during university and have used it to create a web-app for a local business during my
-                    capstone project. Now that I think about it, I also used JavaScript extensively during a class on
-                    computer graphics where we used WebGL as the medium to create our projects.
+                    <p>
+                        Probably the language that I have the most experience developing in. Since so much of today's
+                        technology is web based, it was inevitable that I would run into it eventually.
+                    </p>
+                    <p>
+                        Atwood's law states that "Any application that can be written in JavaScript, will eventually
+                        be written in JavaScript", and I think that's a pretty accurate statement. I've used it for:
+                    </p>
+                    <ul>
+                        <li>Many university assignments</li>
+                        <li>A web-app for a local business during my capstone project</li>
+                        <li>A computer graphics class, where we used WebGL to create our projects</li>
+                    </ul>
                 </div>
             </div>
-            <div id="sql" class="tile">
+            <div id="sql" class="tile" tabindex="0">
                 <!-- Original Icon: https://www.svgrepo.com/svg/525311/database -->
                 <svg class="tile_icon" viewBox="0 0 24 24">
                     <path
@@ -307,13 +458,17 @@
                 </svg>
                 <div class="title">SQL</div>
                 <div class="description">
-                    '; DROP TABLE users; -- Remember to always sanitize your inputs :)
-                    <br />
-                    <br />
-                    I am lucky that I don't have to learn this the hard way, thanks to my professors from my database
-                    class and web development class. I have used SQL in many of my assignments during university and
-                    have used it to create a database for a local business during my capstone project.
+                    <p>'; DROP TABLE users; -- Remember to always sanitize your inputs :)</p>
+                    <p>
+                        I am lucky that I don't have to learn this the hard way, thanks to my professors from my
+                        database class and web development class.
+                    </p>
+                    <p>
+                        I've used SQL in many assignments during university, and to create a database for a local
+                        business during my capstone project.
+                    </p>
                 </div>
+            </div>
             </div>
         </div>
     </body>

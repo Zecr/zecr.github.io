@@ -12,6 +12,14 @@
     fill: #0094e1;
 }
 
+#github:hover {
+    background: #a78bfa29;
+}
+
+#github:hover svg {
+    fill: #a78bfa;
+}
+
 #email:hover {
     background: #26cc5b29;
 }

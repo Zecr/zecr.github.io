@@ -32,6 +32,11 @@
     border: 1px solid white;
 }
 
+.tile:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
 .tile svg path {
     transition: cubic-bezier(0, 0.5, 0, 1) 0.5s;
 }
@@ -41,11 +46,36 @@
     fill: white;
 }
 
+.tile_icon.tile_icon_stroke {
+    fill: none;
+    stroke: white;
+}
+
 .tile .description {
     display: none;
-    margin-top: 1em;
+    margin: 1em auto 0;
+    max-width: 40em;
+    text-align: left;
+    line-height: 1.5;
     
     transition: cubic-bezier(0, 0.5, 0, 1) 0.5s;
+}
+
+.tile .description p {
+    margin: 0 0 0.75em;
+}
+
+.tile .description ul {
+    margin: 0 0 0.75em;
+    padding-left: 1.25em;
+}
+
+.tile .description li {
+    margin-bottom: 0.25em;
+}
+
+.tile .description > :last-child {
+    margin-bottom: 0;
 }
 
 @media (prefers-color-scheme: light) {
@@ -59,5 +89,9 @@
 
     .tile_icon {
         fill: black;
+    }
+
+    .tile_icon.tile_icon_stroke {
+        stroke: black;
     }
 }

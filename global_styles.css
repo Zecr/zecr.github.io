@@ -1,7 +1,7 @@
 html {
     background-color: #000000;
     color: white;
-    font-family: "Calibri Light";
+    font-family: "Calibri Light", "Lato", system-ui, sans-serif;
     height: 100%;
     width: 100%;
 }
@@ -10,12 +10,6 @@ html {
     html {
         background-color: #ffffff;
         color: black;
-    }
-}
-
-@media screen and (max-device-width: 480px) {
-    html {
-        font-size: x-large;
     }
 }
 
@@ -50,6 +44,21 @@ body {
 
 main {
     margin: 1em;
+}
+
+main p a {
+    color: rgb(92, 190, 255);
+}
+
+main a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+@media (prefers-color-scheme: light) {
+    main p a {
+        color: #0070d6;
+    }
 }
 
 /* ::-webkit-scrollbar {

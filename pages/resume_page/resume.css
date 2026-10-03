@@ -1,33 +1,3 @@
 .description_heading h1{
     margin-bottom: 0;
 }
-
-.resume_section_title {
-    justify-self: center;
-    max-width: 80em;
-    width: 100%;
-    margin: auto;
-}
-
-.resume_section_title .title{
-    font-size: 3em;
-    margin-top: 1.5em;
-    /* justify-self: center; */
-}
-
-.separator {    
-    height: 0.05em;
-    background-color: white;
-}
-
-@media screen and (max-width: 1200px) {
-    .resume_section_title {
-        max-width: 35em;
-    }
-}
-
-@media (prefers-color-scheme: light) {
-    .separator {
-        background-color: black;
-    }
-}

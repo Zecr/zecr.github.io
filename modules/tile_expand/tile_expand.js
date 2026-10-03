@@ -108,6 +108,18 @@ async function description_show(enableBoolean, tile) {
     }
 }
 
+// Where the tile will end up (in viewport coordinates) once everything else is hidden.
+// Hiding things shortens the page, which can also pull the scroll position up, so account for that too.
+function landing_top(tile, hiddenElements) {
+    const scrollY = window.scrollY;
+    hiddenElements.forEach((el) => (el.style.display = "none"));
+    const documentTop = tile.getBoundingClientRect().top + window.scrollY;
+    const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 0);
+    hiddenElements.forEach((el) => (el.style.display = ""));
+    window.scrollTo(0, scrollY);
+    return documentTop - Math.min(scrollY, maxScroll);
+}
+
 // Select all the tiles
 var tiles = document.querySelectorAll(".tile");
 
@@ -116,7 +128,12 @@ tiles.forEach((tile, index) => {
     // Add a state to the tile
     tile.isExpanded = false;
     tile.initialBoundingRect = null;
-    const otherTiles = [...tiles].filter((_, i) => i !== index);
+    const otherTiles = [
+        ...[...tiles].filter((_, i) => i !== index),
+        // Section titles and the other skill groups are hidden too, so the open tile has the page to itself
+        ...document.querySelectorAll(".resume_section_title"),
+        ...[...document.querySelectorAll(".skill_group")].filter((group) => !group.contains(tile)),
+    ];
 
     tile.addEventListener("click", async function () {
         // Disable pointer events on all tiles
@@ -130,7 +147,11 @@ tiles.forEach((tile, index) => {
             topTileY = tile.getBoundingClientRect().top;
             await tile_expand(false, tile);
 
+            // Hiding everything else when the tile opened shortened the page and pulled the scroll position up.
+            // center_tile un-hides the other elements synchronously, so restoring the scroll position straight
+            // after (before the browser paints) puts the page back where it was and the tile returns to its spot.
             center_tile(false, tile, tile.initialBoundingRect, otherTiles);
+            window.scrollTo(0, tile.initialScrollY);
 
             await delay(500);
             tile_fade(false, otherTiles);
@@ -139,8 +160,9 @@ tiles.forEach((tile, index) => {
             tile.isExpanded = false;
         } else {
             // Save current position of tile
-            topTileY = tiles[0].getBoundingClientRect().top;
+            topTileY = landing_top(tile, otherTiles);
             tile.initialBoundingRect = tileBoundingRect;
+            tile.initialScrollY = window.scrollY;
             tile.classList.add("selected");
             tile_fade(true, otherTiles, tile);
 
